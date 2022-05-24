@@ -1,0 +1,13 @@
+#!/bin/sh
+
+timestamp=$(date +%Y%m%d-%H%M%S)
+filepath="$HOME/Documents/zettelkasten/$timestamp"
+
+create_zettel () {
+    mkdir "$filepath"
+    touch "$filepath"/README.md
+    "$EDITOR" "$filepath"/README.md 
+}
+
+echo "$timestamp created!"
+create_zettel  
