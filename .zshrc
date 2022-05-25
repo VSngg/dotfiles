@@ -85,6 +85,8 @@ export XDG_CACHE_HOME="$HOME/.cache"
 
 export ELINKS_CONFDIR="$XDG_CONFIG_HOME"/elinks
 
+export BEMENU_OPTS='-I 0 -i -l 10 -p ">_" -W 0.3 --fn "mononoki Nerd Font Mono:10" --nb "#282828" --nf "#ebdbb2" --sf "#282828" --sb "#f4800d" --tb "#282828" --tf "#ebdbb2" --hb "#ebdbb2" --hf "#282828"'
+
 [ -f ~/.config/lf/LF_ICONS ] && {
 	LF_ICONS="$(tr '\n' ':' <~/.config/lf/LF_ICONS)" \
 		&& export LF_ICONS
