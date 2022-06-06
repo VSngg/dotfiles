@@ -9,7 +9,8 @@ set $right l
 # Your preferred terminal emulator
 set $term foot
 # set $menu dmenu_path | dmenu | xargs swaymsg exec --
-set $menu bemenu-run | xargs swaymsg exec
+# set $menu bemenu-run '-I 0 -i -l 10 -p ">_" -W 0.3 --fn "mononoki Nerd Font Mono:10" --nb "#282828" --nf "#ebdbb2" --sf "#282828" --sb "#f4800d" --tb "#282828" --tf "#ebdbb2" --hb "#ebdbb2" --hf "#282828"'| xargs swaymsg exec --
+set $menu yofi | xargs swaymsg exec --
 
 ### Output configuration
 #
@@ -31,6 +32,7 @@ input "type:touchpad" {
     dwt enabled
     tap enabled
     natural_scroll enabled
+    scroll_factor 0.5
     middle_emulation enabled
 }
 input "type:keyboard" {
@@ -42,7 +44,8 @@ input "type:keyboard" {
 
 ### Autostart
 
-exec mako
+# exec mako
+exec nm-applet --indicator
 
 ### Key bindings
 #
@@ -161,6 +164,13 @@ exec mako
     # If there are multiple scratchpad windows, this command cycles through them.
     bindsym $mod+minus scratchpad show
 #
+# Screenshot
+#
+    bindsym Print exec grim -g "$(slurp -d)" - | wl-copy
+    bindsym Shift+Print exec grim -g "$(slurp -d)" - 
+
+
+#
 # XF86 Buttons
 #
     set $WOBSOCK $XDG_RUNTIME_DIR/wob.sock
@@ -233,8 +243,8 @@ client.urgent           $base08 $base08 $base00 $base08 $base08
 
 # bar swaybar_command waybar
 # Set inner/outer gaps
-gaps inner 10
-gaps outer 0
+# gaps inner 0
+# gaps outer 0
 
 # Hide titlebar on windows:
 default_border pixel 2
@@ -244,6 +254,6 @@ font pango:mononoki Nerd Font Mono 10
 
 # Thin borders:
 smart_borders on
-smart_gaps on
+# smart_gaps on
 
 include /etc/sway/config.d/*

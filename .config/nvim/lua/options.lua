@@ -47,4 +47,5 @@ end
 
 vim.cmd "set whichwrap+=<,>,[,],h,l"
 vim.cmd [[set iskeyword+=-]]
+vim.cmd [[highlight ColorColumn ctermbg=233]]
 vim.cmd [[set formatoptions-=r formatoptions-=c formatoptions-=o]]

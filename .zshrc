@@ -33,15 +33,17 @@ alias \
 	rm="rm -vI" \
 	bc="bc -ql" \
 	mkdir="mkdir -pv"
-alias v="nvim" 
 alias hx="helix"
 alias c="clear"
 alias weather="curl ru.wttr.in"
+alias toipe="toipe -w top1000"
+
 alias cdc="cd $HOME/Documents/code/"
 alias cdth="cd $HOME/Documents/диплом/thesis/"
 alias cdcf="cd $HOME/.config/"
 alias cdbin="cd $HOME/.local/bin/"
 alias cdz="cd $HOME/Documents/zettelkasten/"
+
 alias lf="lfub"
 alias gotop="gotop -l procs"
 alias ls="ls -hN --color=auto --group-directories-first" 
@@ -49,6 +51,13 @@ alias ll="ls -alhN --color=auto --group-directories-first"
 alias la="ls -AhN --color=auto --group-directories-first"
 alias chmox="chmod +x"
 
+
+# Autostart TMUX
+
+# if [[ -z "$TMUX" ]]
+# then
+#     tmux attach -t default || tmux new -s default
+# fi
 
 # functions
 
@@ -72,7 +81,7 @@ bindkey -s '^f' 'cd "$(dirname "$(fzf)")"\n'
 
 # Environment variables
 
-export EDITOR=nvim
+export EDITOR="vim"
 export PATH=$PATH:$(go env GOPATH)/bin
 export PATH=/home/vs/.cargo/bin:$PATH
 export PATH=/home/vs/.local/bin:$PATH

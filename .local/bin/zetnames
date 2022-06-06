@@ -1,10 +1,13 @@
 #!/bin/sh
-
 cd "$HOME"/Documents/zettelkasten/ || exit
 
-for i in **/README.md
-    do head -1 "$i"
-done | sort | sed 's/# //g'
+one() {
+    for i in **/README.md; do
+        name=$(head -1 "$i")
+        echo "${name##\# }"
+    done 
+}
+one
 cd - >/dev/null || exit
 
 

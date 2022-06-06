@@ -1,16 +1,5 @@
-
-" Uncomment the next line to make Vim more Vi-compatible
-" NOTE: debian.vim sets 'nocompatible'.  Setting 'compatible' changes numerous
-" options, so any other options should be set AFTER setting 'compatible'.
 "set compatible
-
-" Vim5 and later versions support syntax highlighting. Uncommenting the next
-" line enables syntax highlighting by default.
 syntax on
-
-" If using a dark background within the editing area and syntax highlighting
-" turn on this option as well
-set background=dark
 
 " Uncomment the following to have Vim jump to the last position when
 " reopening a file
@@ -35,6 +24,8 @@ set autowrite           " Automatically save before commands like :next and :mak
 set hidden              " Hide buffers when they are abandoned
 set mouse="a"           
 set viminfo=""
+set clipboard=unnamedplus
+set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
 
 "---
 " Enable folding
@@ -42,7 +33,7 @@ set viminfo=""
 set foldmethod=indent
 set foldlevel=99
 " Enable folding with the spacebar
-"nnoremap <space> za
+nnoremap <space> za
 
 "---
 " show ruler
@@ -114,8 +105,6 @@ set cindent
 "---
 " highlight cursor line and column
 "---
-hi CursorLine   cterm=NONE ctermbg=8 " ctermfg=white
-hi CursorColumn cterm=NONE ctermbg=8 " ctermfg=white
 "set cursorline
 "set cursorcolumn
 
@@ -149,11 +138,6 @@ imap <silent> <C-C> <ESC>:nohlsearch<CR>a
 nmap <silent> <C-C> :nohlsearch<CR>
 
 "---
-" fix backspace on some systems
-"---
-set backspace=indent,eol,start
-
-"---
 " after using autocomplete close the preview window
 " since vim 7.4.
 "---
@@ -172,6 +156,11 @@ set encoding=utf-8
 set completeopt=longest,menuone,preview "preview shows a nice preview window of the function...
 "set completeopt=longest,menuone,preview
 "set completeopt=longest,menuone
+"
+
+
+"Set textwidth to 72 in MarkDown files
+au BufRead,BufNewFile *.md setlocal textwidth=72
 
 "
 "----------------------------------( python )
@@ -188,8 +177,11 @@ autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 if filereadable(expand("~/.vim/autoload/plug.vim"))
     call plug#begin('~/.local/share/vim/plugins')
     Plug 'lifepillar/vim-gruvbox8'
+    Plug 'srcery-colors/srcery-vim'
     call plug#end()
 endif
 
 set background=dark
-colorscheme gruvbox8
+" colorscheme gruvbox8
+colorscheme srcery
+hi Normal guibg=NONE ctermbg=NONE 

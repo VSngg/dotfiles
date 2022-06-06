@@ -16,7 +16,7 @@ require("bufferline").setup {
   }
 }
 require("nvimtree")
-require("autopairs")
+-- require("autopairs")
 require("comments")
 require("treesitter")
 require("colorize")

@@ -14,6 +14,7 @@ vis.events.subscribe(vis.events.WIN_OPEN, function(win)
 	vis:command('set expandtab on')
 	vis:command('set tabwidth 4')
 	vis:command('set theme gruvbox256')
+	-- vis:command('set cc 72')
 	vis:command('langmap фисвуапршолдьтщзйкыегмцчня abcdefghijklmnopqrstuvwxyz')
 end)
 
