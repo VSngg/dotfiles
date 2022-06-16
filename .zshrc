@@ -1,6 +1,7 @@
 # Enable colors and change prompt:
 autoload -U colors && colors	# Load colors
-PS1="%B%{$fg[red]%}%n%{$fg[white]%}@%{$fg[yellow]%}%M %{$fg[magenta]%}%~%{$reset_color%} $%b "
+PS1="%B%{$fg[red]%}%n%{$fg[white]%}@%{$fg[cyan]%}%M %{$fg[magenta]%}%4~%{$reset_color%} $%b "
+# PS1="%B%{$fg[red]%}%n%{$fg[white]%}@%{$fg[yellow]%}%M %{$fg[magenta]%}%4~%{$reset_color%} $%b "
 
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.cache/zsh/history
@@ -37,6 +38,7 @@ alias hx="helix"
 alias c="clear"
 alias weather="curl ru.wttr.in"
 alias toipe="toipe -w top1000"
+alias tetris="tint -n -d -s"
 
 alias cdc="cd $HOME/Documents/code/"
 alias cdth="cd $HOME/Documents/диплом/thesis/"
@@ -85,7 +87,7 @@ export EDITOR="vim"
 export PATH=$PATH:$(go env GOPATH)/bin
 export PATH=/home/vs/.cargo/bin:$PATH
 export PATH=/home/vs/.local/bin:$PATH
-export BAT_THEME="gruvbox-dark"
+export BAT_THEME="Solarized (dark)"
 export KDEHOME=$XDG_CONFIG_HOME/kde
 export BROWSER=firefox
 export XDG_CONFIG_HOME="$HOME/.config"

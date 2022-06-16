@@ -1,0 +1,14 @@
+#!/bin/sh
+
+create(){
+    touch "$1"
+    chmod +x "$1"
+    $EDITOR "$1"
+}
+
+if test "$#" -lt 1; then
+    echo "usage: newx <name>" >&2
+    exit
+fi
+
+create "$@"

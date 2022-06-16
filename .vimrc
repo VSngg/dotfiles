@@ -22,6 +22,7 @@ set smartcase           " Do smart case matching
 set incsearch           " Incremental search
 set autowrite           " Automatically save before commands like :next and :make
 set hidden              " Hide buffers when they are abandoned
+set scrolloff=5          
 set mouse="a"           
 set viminfo=""
 set clipboard=unnamedplus
@@ -70,7 +71,7 @@ set visualbell
 "---
 " set history size
 "---
-set history=250
+set history=2500
 
 "---
 " show typed commnd in lower right corner (cmd's, selection length, etc)
@@ -105,12 +106,14 @@ set cindent
 "---
 " highlight cursor line and column
 "---
-"set cursorline
+set cursorline
 "set cursorcolumn
 
-noremap  <F4> :set cursorline! cursorcolumn!<CR>
-inoremap <F4> <ESC>:set cursorline! cursorcolumn!<CR>i
+noremap  <F4> :set cursorcolumn!<CR>
+inoremap <F4> <ESC>:set cursorcolumn!<CR>i
 
+noremap  <F5> :set cursorline!<CR>
+inoremap <F5> <ESC>:set cursorline!<CR>i
 
 "---
 " toggle paste
@@ -128,11 +131,6 @@ inoremap <F2> <ESC>:set nonumber!<CR>i
 "---
 " mappings
 "---
-nmap ,, <C-]> "jump to tag
-nmap <CR> i<CR><ESC>
-"nmap <TAB> ==
-" auto indent
-nmap -- gg=G''
 " unhilight search
 imap <silent> <C-C> <ESC>:nohlsearch<CR>a
 nmap <silent> <C-C> :nohlsearch<CR>
@@ -158,30 +156,21 @@ set completeopt=longest,menuone,preview "preview shows a nice preview window of 
 "set completeopt=longest,menuone
 "
 
-
 "Set textwidth to 72 in MarkDown files
 au BufRead,BufNewFile *.md setlocal textwidth=72
-
-"
-"----------------------------------( python )
-"
-" enable all Python syntax highlighting features
-let python_highlight_all = 1
-
-
-"
-"----------------------------------( yaml )
-"
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
 if filereadable(expand("~/.vim/autoload/plug.vim"))
     call plug#begin('~/.local/share/vim/plugins')
     Plug 'lifepillar/vim-gruvbox8'
     Plug 'srcery-colors/srcery-vim'
+    Plug 'xero/sourcerer.vim'
+    Plug 'altercation/vim-colors-solarized'
     call plug#end()
 endif
 
 set background=dark
 " colorscheme gruvbox8
-colorscheme srcery
+colorscheme solarized
+" colorscheme sourcerer
 hi Normal guibg=NONE ctermbg=NONE 
