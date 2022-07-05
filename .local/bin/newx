@@ -1,4 +1,6 @@
 #!/bin/sh
+#
+# This script creates a file, makes it executable and opens it in editor
 
 create(){
     touch "$1"

@@ -1,4 +1,3 @@
-"set compatible
 syntax on
 
 " Uncomment the following to have Vim jump to the last position when
@@ -13,8 +12,6 @@ if has("autocmd")
   filetype plugin indent on
 endif
 
-" The following are commented out as they cause vim to behave a lot
-" differently from regular Vi. They are highly recommended though.
 set showcmd             " Show (partial) command in status line.
 set showmatch           " Show matching brackets.
 set ignorecase          " Do case insensitive matching
@@ -26,6 +23,7 @@ set scrolloff=5
 set mouse="a"           
 set viminfo=""
 set clipboard=unnamedplus
+set spelllang=ru_ru,en_us
 set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
 
 "---
@@ -41,14 +39,15 @@ nnoremap <space> za
 "---
 set ruler
 set laststatus=2 "always show status line
-set statusline=
-set statusline+=\ %F
+"set statusline=%30(%=%#LineNr#%.50F\ [%{strlen(&ft)?&ft:'none'}]\ %l:%c\ %p%%%)
+set statusline=%#LineNr#
+set statusline+=\ %.50F
 set statusline+=%#Title#
 set statusline+=%m%r%h%w
-set statusline+=%#StatusLine#
+set statusline+=%#LineNr#
 set statusline+=%=
-set statusline+=%#StatusLine#
-set statusline+=%l:%v\ %p%%
+set statusline+=%#LineNr#
+set statusline+=\ [%{strlen(&ft)?&ft:'none'}]\ %l:%v\ %p%%
 
 "---
 " enable wildmenue (:e ^D) for file selection...
@@ -72,11 +71,6 @@ set visualbell
 " set history size
 "---
 set history=2500
-
-"---
-" show typed commnd in lower right corner (cmd's, selection length, etc)
-"---
-set showcmd
 
 "---
 " search stuff
@@ -151,10 +145,8 @@ set encoding=utf-8
 "
 " show fancy menu for completition
 "---
-set completeopt=longest,menuone,preview "preview shows a nice preview window of the function...
-"set completeopt=longest,menuone,preview
-"set completeopt=longest,menuone
-"
+
+set completeopt=longest,menuone,preview,noinsert "preview shows a nice preview window of the function...
 
 "Set textwidth to 72 in MarkDown files
 au BufRead,BufNewFile *.md setlocal textwidth=72
@@ -163,9 +155,14 @@ autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 if filereadable(expand("~/.vim/autoload/plug.vim"))
     call plug#begin('~/.local/share/vim/plugins')
     Plug 'lifepillar/vim-gruvbox8'
+    Plug 'sheerun/vim-polyglot'
+    Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
     Plug 'srcery-colors/srcery-vim'
     Plug 'xero/sourcerer.vim'
+    Plug 'vim-pandoc/vim-pandoc'
+    Plug 'rwxrob/vim-pandoc-syntax-simple'
     Plug 'altercation/vim-colors-solarized'
+    Plug 'lifepillar/vim-mucomplete'
     call plug#end()
 endif
 
@@ -173,4 +170,4 @@ set background=dark
 " colorscheme gruvbox8
 colorscheme solarized
 " colorscheme sourcerer
-hi Normal guibg=NONE ctermbg=NONE 
+" hi Normal guibg=NONE ctermbg=NONE 

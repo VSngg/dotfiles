@@ -12,8 +12,8 @@ window:
   #  y: 0
   
   # Window opacity
-  opacity: 0.92
-  # opacity: 1
+  # opacity: 0.92
+  opacity: 1
   # Window padding (changes require restart)
   padding:
     x: 4
@@ -240,8 +240,32 @@ schemes:
       magenta: '0x6c71c4'
       cyan:    '0x93a1a1'
       white:   '0xfdf6e3'
-
-    
+  ### Nord ###
+	Nordic: &Nordic
+		primary:
+			background: '#2e3440'
+			foreground: '#d8dee9'
+		cursor:
+			text: '#2e3440'
+			cursor: '#d8dee9'
+		normal:
+			black: '#3b4252'
+			red: '#bf616a'
+			green: '#a3be8c'
+			yellow: '#ebcb8b'
+			blue: '#81a1c1'
+			magenta: '#b48ead'
+			cyan: '#88c0d0'
+			white: '#e5e9f0'
+		bright:
+			black: '#4c566a'
+			red: '#bf616a'
+			green: '#a3be8c'
+			yellow: '#ebcb8b'
+			blue: '#81a1c1'
+			magenta: '#b48ead'
+			cyan: '#8fbcbb'
+			white: '#eceff4'
 
 ######################################################################
 ## SET THEME: Choose ONE color scheme from those in the above list. ##
@@ -251,8 +275,10 @@ schemes:
 # *Srcery
 # *Sourcerer
 # *Solarized
+# *Nord
 
 colors: *Solarized
+
 
 
 

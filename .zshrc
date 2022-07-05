@@ -1,5 +1,6 @@
 # Enable colors and change prompt:
 autoload -U colors && colors	# Load colors
+
 PS1="%B%{$fg[red]%}%n%{$fg[white]%}@%{$fg[cyan]%}%M %{$fg[magenta]%}%4~%{$reset_color%} $%b "
 # PS1="%B%{$fg[red]%}%n%{$fg[white]%}@%{$fg[yellow]%}%M %{$fg[magenta]%}%4~%{$reset_color%} $%b "
 
@@ -61,6 +62,7 @@ alias chmox="chmod +x"
 #     tmux attach -t default || tmux new -s default
 # fi
 
+
 # functions
 
 se() { du -a ~/.config/* | awk '{print $2}' | fzf --preview 'bat {}' | xargs -r $EDITOR ;}
@@ -84,19 +86,23 @@ bindkey -s '^f' 'cd "$(dirname "$(fzf)")"\n'
 # Environment variables
 
 export EDITOR="vim"
+export BROWSER="firefox"
+
 export PATH=$PATH:$(go env GOPATH)/bin
 export PATH=/home/vs/.cargo/bin:$PATH
 export PATH=/home/vs/.local/bin:$PATH
+
 export BAT_THEME="Solarized (dark)"
-export KDEHOME=$XDG_CONFIG_HOME/kde
-export BROWSER=firefox
+export KDEHOME="$XDG_CONFIG_HOME/kde"
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_STATE_HOME="$HOME/.local/state"
+export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
 
+
+export QT_QPA_PLATFORM=wayland
 export ELINKS_CONFDIR="$XDG_CONFIG_HOME"/elinks
-
-export BEMENU_OPTS='-I 0 -i -l 10 -p ">_" -W 0.3 --fn "mononoki Nerd Font Mono:10" --nb "#282828" --nf "#ebdbb2" --sf "#282828" --sb "#f4800d" --tb "#282828" --tf "#ebdbb2" --hb "#ebdbb2" --hf "#282828"'
 
 [ -f ~/.config/lf/LF_ICONS ] && {
 	LF_ICONS="$(tr '\n' ':' <~/.config/lf/LF_ICONS)" \

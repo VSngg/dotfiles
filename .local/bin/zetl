@@ -1,5 +1,5 @@
 #!/bin/sh
-
+#
 # A script for linking zettels
 
 OUTPUT=$(ls $HOME/Documents/zettelkasten/ | fzf)

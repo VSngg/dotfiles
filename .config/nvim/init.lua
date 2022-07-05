@@ -1,23 +1,22 @@
-require("plugins")
-require("options")
-require("keymaps")
-require("colorscheme")
-require("lualine").setup({
-  options = {
-    disabled_filetypes = { "dashboard", "NvimTree", "Outline" },
-    theme = "gruvbox-baby",
-  }
-})
-require("bufferline").setup {
-  options = {
-    always_show_bufferline = false,
-    show_close_icon = false,
-    offsets = { { filetype = "NvimTree", text = "", padding = 1 } },
-  }
-}
-require("nvimtree")
--- require("autopairs")
-require("comments")
-require("treesitter")
-require("colorize")
-require("lspzero")
+require "user.options"
+require "user.keymaps"
+require "user.plugins"
+require "user.autocommands"
+require "user.colorscheme"
+require "user.cmp"
+require "user.telescope"
+require "user.treesitter"
+require "user.autopairs"
+require "user.comment"
+require "user.gitsigns"
+require "user.nvim-tree"
+require "user.bufferline"
+require "user.lualine"
+require "user.toggleterm"
+require "user.project"
+require "user.impatient"
+require "user.illuminate"
+require "user.indentline"
+require "user.alpha"
+require "user.lsp"
+require "user.dap"
