@@ -42,10 +42,11 @@ alias toipe="toipe -w top1000"
 alias tetris="tint -n -d -s"
 
 alias cdc="cd $HOME/Documents/code/"
-alias cdth="cd $HOME/Documents/диплом/thesis/"
 alias cdcf="cd $HOME/.config/"
 alias cdbin="cd $HOME/.local/bin/"
 alias cdz="cd $HOME/Documents/zettelkasten/"
+alias cdtmp="cd $(mktemp -d)"
+alias cdsnip="cd $SNIPPETS"
 
 alias lf="lfub"
 alias gotop="gotop -l procs"
@@ -100,6 +101,7 @@ export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_STATE_HOME="$HOME/.local/state"
 export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
 
+export SNIPPETS="$XDG_DATA_HOME/snip/"
 
 export QT_QPA_PLATFORM=wayland
 export ELINKS_CONFDIR="$XDG_CONFIG_HOME"/elinks
