@@ -28,6 +28,11 @@ export ZETDIR="$HOME/Documents/zettelkasten/"
 export QT_QPA_PLATFORM=wayland
 export ELINKS_CONFDIR="$XDG_CONFIG_HOME"/elinks
 
+[ -f ~/.config/lf/LF_ICONS ] && {
+    LF_ICONS="$(tr '\n' ':' <~/.config/lf/LF_ICONS)" \
+        && export LF_ICONS
+}
+
 # ----- DIRCOLORS ----- #
 
 if [[ -r "$HOME/.dircolors" ]]; then
@@ -127,6 +132,25 @@ alias cdbin="cd $HOME/.local/bin/"
 alias cdz="cd $HOME/Documents/zettelkasten/"
 alias cdtmp="cd $(mktemp -d)"
 alias cdsnip="cd $SNIPPETS"
+
+# ----- FUNCTIONS ----- #
+
+lfcd () {
+    tmp="$(mktemp)"
+    lf -last-dir-path="$tmp" "$@"
+    if [ -f "$tmp" ]; then
+        dir="$(cat "$tmp")"
+        rm -f "$tmp"
+        if [ -d "$dir" ]; then
+            if [ "$dir" != "$(pwd)" ]; then
+                cd "$dir"
+            fi
+        fi
+    fi
+}
+
+bind '"\C-o":"lfcd\C-m"'
+
 
 # ----- COMPLETION ----- #
 
