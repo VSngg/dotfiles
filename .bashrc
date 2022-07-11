@@ -144,7 +144,7 @@ function parse_git_dirty {
 }
 
 
-export PS1="\[\e[31m\]\u\[\e[m\]@\[\e[36m\]\h\[\e[m\] \[\e[35m\]\w\[\e[m\] \[\e[34m\]\`parse_git_branch\`\[\e[m\]\\$ "
+export PS1="\[\e[31m\]\u\[\e[m\]@\[\e[36m\]\h\[\e[m\] \[\e[35m\]\W\[\e[m\] \[\e[34m\]\`parse_git_branch\`\[\e[m\]\\$ "
 
 
 # ----- ALIASES ----- #
