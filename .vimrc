@@ -38,14 +38,11 @@ set foldlevel=99
 set ruler
 set laststatus=2 "always show status line
 "set statusline=%30(%=%#LineNr#%.50F\ [%{strlen(&ft)?&ft:'none'}]\ %l:%c\ %p%%%)
-set statusline=%#LineNr#
-set statusline+=\ %.50F
-set statusline+=%#Title#
-set statusline+=%m%r%h%w
+set statusline=%#LineNr#\ %.50F
+set statusline+=%#Title#%m%r%h%w
 set statusline+=%#LineNr#
 set statusline+=%=
-set statusline+=%#LineNr#
-set statusline+=\ [%{strlen(&ft)?&ft:'none'}]\ %l:%v\ %p%%
+set statusline+=%#LineNr#\ [%{strlen(&ft)?&ft:'none'}]\ %l:%v\ %p%%
 
 "---
 " enable wildmenue (:e ^D) for file selection...
@@ -113,6 +110,12 @@ inoremap <F5> <ESC>:set cursorline!<CR>i
 set pastetoggle=<F3>
 
 "---
+" color column
+"---
+set colorcolumn=80
+nnoremap <F6> :set colorcolumn= <CR>
+
+"---
 " linenumbering on / off
 "---
 set number
@@ -124,8 +127,10 @@ inoremap <F2> <ESC>:set nonumber!<CR>i
 " mappings
 "---
 " unhilight search
-imap <silent> <C-C> <ESC>:nohlsearch<CR>a
-nmap <silent> <C-C> :nohlsearch<CR>
+imap <silent> <C-L> <ESC>:nohlsearch<CR>a
+
+" make Y consitent with D and C (yank til end)
+map Y y$
 
 "---
 " after using autocomplete close the preview window
@@ -169,3 +174,22 @@ set background=dark
 colorscheme solarized
 " colorscheme sourcerer
 " hi Normal guibg=NONE ctermbg=NONE 
+
+" --- vim-go setup ---
+let g:go_fmt_fail_silently = 0
+let g:go_fmt_command = 'goimports'
+let g:go_fmt_autosave = 1
+let g:go_gopls_enabled = 1
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_variable_declarations = 1
+let g:go_highlight_variable_assignments = 1
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_diagnostic_errors = 1
+let g:go_highlight_diagnostic_warnings = 1
+let g:go_auto_sameids = 0
+
