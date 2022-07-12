@@ -109,8 +109,12 @@ autocmd CompleteDone * pclose
 
 "Set textwidth to 72 in MarkDown files
 au BufRead,BufNewFile *.md setlocal textwidth=72
+
 au FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 au FileType c set sw=8
+
+" Strip trailing whitespace from files
+au FileType c,go au BufWritePre <buffer> %s/\s\+$//e
 
 " ----- Plugins ----- "
 
