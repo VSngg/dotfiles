@@ -28,6 +28,7 @@ set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNO
 set langmap+=фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
 
 match IncSearch '\s\+$' " mark trailing spaces as errors
+set listchars=space:*,trail:*,nbsp:*,extends:>,precedes:<,tab:\|>
 filetype plugin on      " allow detecting a filetype
 
 " ----- Enable folding ----- "
@@ -90,10 +91,13 @@ set cindent
 let mapleader=" "
 
 " unhilight search
-nnoremap <C-L> :nohl<CR><C-L>
+nnoremap <leader>l :nohl<CR><C-L>
 
-set pastetoggle=<F3>
-nnoremap <F6> :set colorcolumn= <CR>
+nnoremap <leader>sl :set list<CR>
+nnoremap <leader>sL :set nolist<CR>
+nnoremap <leader>p :set paste<CR>i
+nnoremap <leader>P :set nopaste<CR>
+nnoremap <leader>sc :set colorcolumn= <CR>
 
 " make Y consitent with D and C (yank til end)
 map Y y$
@@ -112,9 +116,6 @@ au BufRead,BufNewFile *.md setlocal textwidth=72
 
 au FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 au FileType c set sw=8
-
-" Strip trailing whitespace from files
-au FileType c,go au BufWritePre <buffer> %s/\s\+$//e
 
 " ----- Plugins ----- "
 
