@@ -21,7 +21,7 @@ _clearscreen() {
     tmux send-keys -t $session.1 "clear" ENTER 
 }
 _openbook() {
-    zathura ~/Documents/code/golang/nathan-youngman-roger-peppé-get-programming-with-go-2018.pdf &
+    zathura ~/Documents/code/golang/get-programming-with-go-2018.pdf &
 }
 
 main() {

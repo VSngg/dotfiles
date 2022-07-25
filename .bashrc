@@ -9,6 +9,7 @@
 
 export EDITOR="vim"
 export BROWSER="firefox"
+export TERM=xterm-256color
 
 export PATH=$PATH:$(go env GOPATH)/bin
 export PATH=/home/vs/.cargo/bin:$PATH
@@ -173,6 +174,7 @@ alias toipe="toipe -w top1000"
 alias tetris="tint -n -d -s"
 alias lf="lfub"
 alias gotop="gotop -l procs"
+alias sshserver="ssh root@185.70.187.106"
 
 # change directory
 alias cdc="cd $HOME/Documents/code/"
@@ -203,3 +205,9 @@ bind '"\C-o":"lfcd\C-m"'
 
 # ----- COMPLETION ----- #
 
+COMPLETION_DIR="/usr/share/bash-completion/completions"
+# for file in $COMPLETION_DIR/*; do
+#     source "$file"
+# done
+
+source /usr/share/bash-completion/bash_completion

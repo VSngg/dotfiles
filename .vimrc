@@ -18,7 +18,8 @@ set cursorline          " Highlight cursorline
 set colorcolumn=81
 
 set ttyfast             " Faster scrolling
-set mouse="a"
+set ttymouse=xterm2     " Allow mouse clicks inside tmux
+set mouse=a
 set viminfo='20,<1000,s1000
 set report=0            " Tell when anyting is changed by : <cmd>
 set clipboard=unnamedplus
@@ -27,7 +28,6 @@ set spelllang=ru_ru,en_us
 set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,
 set langmap+=фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
 
-match IncSearch '\s\+$' " mark trailing spaces as errors
 set listchars=space:*,trail:*,nbsp:*,extends:>,precedes:<,tab:\|>
 filetype plugin on      " allow detecting a filetype
 
@@ -58,7 +58,7 @@ set noerrorbells
 set t_vb=
 set visualbell
 
-" ----- Set History Size ----- "
+" ----- Set History Size ----- "   
 
 set history=2500
 
@@ -87,20 +87,32 @@ set cindent
 
 " ----- Keymaps ----- "
 
-"map leader to space
+" map leader to space
 let mapleader=" "
 
 " unhilight search
 nnoremap <leader>l :nohl<CR><C-L>
+" mark trailing spaces as errors
+nnoremap <leader>ms :match IncSearch '\s\+$'<CR>
 
 nnoremap <leader>sl :set list<CR>
 nnoremap <leader>sL :set nolist<CR>
+
 nnoremap <leader>p :set paste<CR>i
 nnoremap <leader>P :set nopaste<CR>
+
 nnoremap <leader>sc :set colorcolumn= <CR>
+
+nnoremap <leader>c :MUcompleteAutoToggle<CR>
 
 " make Y consitent with D and C (yank til end)
 map Y y$
+
+" select previous and next buffer
+nnoremap H :bprev<CR>
+nnoremap L :bnext<CR>
+
+nnoremap <leader>bd :bdelete<CR>
 
 " ----- Completion ----- "
 
@@ -111,35 +123,32 @@ autocmd CompleteDone * pclose
 
 " ----- Filetype Autocommands ----- "
 
-"Set textwidth to 72 in MarkDown files
+" Set textwidth to 72 in MarkDown files
 au BufRead,BufNewFile *.md setlocal textwidth=72
 
 au FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
-au FileType c set sw=8
+au FileType c setlocal tabstop=8 shiftwidth=8 sts=0 noexpandtab
 
 " ----- Plugins ----- "
 
 if filereadable(expand("~/.vim/autoload/plug.vim"))
     call plug#begin('~/.local/share/vim/plugins')
-    Plug 'lifepillar/vim-gruvbox8'
-    Plug 'sheerun/vim-polyglot'
     Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-    Plug 'srcery-colors/srcery-vim'
-    Plug 'xero/sourcerer.vim'
-    Plug 'vim-pandoc/vim-pandoc'
-    Plug 'rwxrob/vim-pandoc-syntax-simple'
     Plug 'altercation/vim-colors-solarized'
     Plug 'lifepillar/vim-mucomplete'
+    Plug 'lifepillar/vim-solarized8'
+    Plug 'ap/vim-buftabline'
+    Plug 'jaredgorski/fogbell.vim'
+    Plug 'chrisbra/Colorizer'
+    Plug 'VSngg/solarfog.vim'
     call plug#end()
 endif
 
 " ----- Colorscheme ----- "
 
 set background=dark
-" colorscheme gruvbox8
-colorscheme solarized
-" colorscheme sourcerer
-" hi Normal guibg=NONE ctermbg=NONE
+colorscheme solarfog
+set termguicolors
 
 " ----- vim-go setup ----- "
 
