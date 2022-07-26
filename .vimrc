@@ -112,7 +112,7 @@ map Y y$
 nnoremap H :bprev<CR>
 nnoremap L :bnext<CR>
 
-nnoremap <leader>bd :bdelete<CR>
+nnoremap <leader>q :bdelete<CR>
 
 " ----- Completion ----- "
 
@@ -123,11 +123,18 @@ autocmd CompleteDone * pclose
 
 " ----- Filetype Autocommands ----- "
 
-" Set textwidth to 72 in MarkDown files
-au BufRead,BufNewFile *.md setlocal textwidth=72
-
-au FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
-au FileType c setlocal tabstop=8 shiftwidth=8 sts=0 noexpandtab
+au FileType c setlocal noet ts=8 sw=8 tw=80
+au FileType h setlocal noet ts=8 sw=8 tw=80
+au FileType cpp setlocal noet ts=8 sw=8 tw=80
+au FileType s setlocal noet ts=8 sw=8
+au FileType go setlocal noet ts=4 sw=4
+au BufRead,BufNewFile *.js setlocal et ts=2 sw=2
+au FileType html setlocal et ts=2 sw=2
+au FileType htmldjango setlocal et ts=2 sw=2
+au FileType scss setlocal et ts=2 sw=2
+au FileType yaml setlocal et ts=2 sw=2
+au FileType markdown setlocal tw=80 et ts=2 sw=2
+au FileType text setlocal tw=80
 
 " ----- Plugins ----- "
 
@@ -169,3 +176,34 @@ let g:go_highlight_diagnostic_errors = 1
 let g:go_highlight_diagnostic_warnings = 1
 let g:go_auto_sameids = 0
 
+" ----- netrw setup ----- "
+
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+let g:netrw_winsize = 25
+
+" Toggle Vexplore 
+function! ToggleVExplorer()
+    if exists("t:expl_buf_num")
+        let expl_win_num = bufwinnr(t:expl_buf_num)
+        let cur_win_num = winnr()
+
+        if expl_win_num != -1
+            while expl_win_num != cur_win_num
+                exec "wincmd w"
+                let cur_win_num = winnr()
+            endwhile
+
+            close
+        endif
+
+        unlet t:expl_buf_num
+    else
+         Vexplore
+         let t:expl_buf_num = bufnr("%")
+    endif
+endfunction
+
+map <silent> <leader>e :call ToggleVExplorer()<CR>
