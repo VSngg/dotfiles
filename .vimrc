@@ -2,8 +2,9 @@
 
 syntax on
 
-set showcmd             " Show (partial) command in status line.
-set showmatch           " Show matching brackets.
+set showcmd             " Show (partial) command in status line
+set showmatch           " Show matching brackets
+set matchtime=3         " Set matching brackets time
 set ignorecase          " Do case insensitive matching
 set smartcase           " Do smart case matching
 set incsearch           " Incremental search
@@ -58,7 +59,7 @@ set noerrorbells
 set t_vb=
 set visualbell
 
-" ----- Set History Size ----- "   
+" ----- Set History Size ----- "
 
 set history=2500
 
@@ -95,18 +96,20 @@ nnoremap <leader>l :nohl<CR><C-L>
 " mark trailing spaces as errors
 nnoremap <leader>ms :match IncSearch '\s\+$'<CR>
 
-nnoremap <leader>sl :set list<CR>
-nnoremap <leader>sL :set nolist<CR>
+nnoremap <leader>sl :set list!<CR>
 
-nnoremap <leader>p :set paste<CR>i
-nnoremap <leader>P :set nopaste<CR>
+set pastetoggle=<leader>sp
 
 nnoremap <leader>sc :set colorcolumn= <CR>
 
-nnoremap <leader>c :MUcompleteAutoToggle<CR>
+nnoremap <leader>tm :MUcompleteAutoToggle<CR>
+nnoremap <leader>tc :ColorToggle<CR>
 
 " make Y consitent with D and C (yank til end)
 map Y y$
+
+" disable Ex mode
+nnoremap Q <nop>
 
 " select previous and next buffer
 nnoremap H :bprev<CR>
@@ -148,6 +151,7 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
     Plug 'jaredgorski/fogbell.vim'
     Plug 'chrisbra/Colorizer'
     Plug 'VSngg/solarfog.vim'
+    Plug 'andreasvc/vim-256noir'
     call plug#end()
 endif
 
@@ -182,9 +186,9 @@ let g:netrw_banner = 0
 let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4
 let g:netrw_altv = 1
-let g:netrw_winsize = 25
+let g:netrw_winsize = 20
 
-" Toggle Vexplore 
+" Toggle Vexplore
 function! ToggleVExplorer()
     if exists("t:expl_buf_num")
         let expl_win_num = bufwinnr(t:expl_buf_num)
