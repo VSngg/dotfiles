@@ -89,7 +89,7 @@ set cindent
 " ----- Keymaps ----- "
 
 " map leader to space
-let mapleader=" "
+let mapleader="\<Space>"
 
 " unhilight search
 nnoremap <leader>l :nohl<CR><C-L>
@@ -98,7 +98,8 @@ nnoremap <leader>ms :match IncSearch '\s\+$'<CR>
 
 nnoremap <leader>sl :set list!<CR>
 
-set pastetoggle=<leader>sp
+"set pastetoggle=<leader>sp
+nnoremap <leader>sp :set paste!<CR>
 
 nnoremap <leader>sc :set colorcolumn= <CR>
 
