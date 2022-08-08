@@ -61,48 +61,12 @@ shopt -s histappend
 
 # ----- PROMPT ----- #
 
-# PROMPT_LONG=20
-# PROMPT_MAX=95
-# PROMPT_AT=@
-
-# __ps1() {
-#   local P='$' dir="${PWD##*/}" B countme short long double\
-#     r='\[\e[31m\]' g='\[\e[30m\]' h='\[\e[34m\]' \
-#     u='\[\e[33m\]' p='\[\e[34m\]' w='\[\e[35m\]' \
-#     b='\[\e[36m\]' x='\[\e[0m\]'
-#
-#   [[ $EUID == 0 ]] && P='#' && u=$r && p=$u # root
-#   [[ $PWD = / ]] && dir=/
-#   [[ $PWD = "$HOME" ]] && dir='~'
-#
-#   B=$(git branch --show-current 2>/dev/null)
-#   [[ $dir = "$B" ]] && B=.
-#   countme="$USER$PROMPT_AT$(hostname):$dir($B)\$ "
-#
-#   [[ $B = master || $B = main ]] && b="$r"
-#   [[ -n "$B" ]] && B="$g($b$B$g)"
-#
-#   short="$u\u$g$PROMPT_AT$h\h$g:$w$dir$B$p$P$x "
-#   long="$g╔ $u\u$g$PROMPT_AT$h\h$g:$w$dir$B\n$g╚ $p$P$x "
-#   double="$g╔ $u\u$g$PROMPT_AT$h\h$g:$w$dir\n$g║ $B\n$g╚ $p$P$x "
-#
-#   if (( ${#countme} > PROMPT_MAX )); then
-#     PS1="$double"
-#   elif (( ${#countme} > PROMPT_LONG )); then
-#     PS1="$long"
-#   else
-#     PS1="$short"
-#   fi
-# }
-#
-# PROMPT_COMMAND="__ps1"
-
 # get current branch in git repo
 function parse_git_branch() {
-	BRANCH=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
+    BRANCH=$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')
 	if [ ! "${BRANCH}" == "" ]
 	then
-		STAT=`parse_git_dirty`
+        STAT=$(parse_git_dirty)
 		echo "[${BRANCH}${STAT}]"
 	else
 		echo ""
@@ -111,13 +75,19 @@ function parse_git_branch() {
 
 # get current status of git repo
 function parse_git_dirty {
-	status=`git status 2>&1 | tee`
-	dirty=`echo -n "${status}" 2> /dev/null | grep "modified:" &> /dev/null; echo "$?"`
-	untracked=`echo -n "${status}" 2> /dev/null | grep "Untracked files" &> /dev/null; echo "$?"`
-	ahead=`echo -n "${status}" 2> /dev/null | grep "Your branch is ahead of" &> /dev/null; echo "$?"`
-	newfile=`echo -n "${status}" 2> /dev/null | grep "new file:" &> /dev/null; echo "$?"`
-	renamed=`echo -n "${status}" 2> /dev/null | grep "renamed:" &> /dev/null; echo "$?"`
-	deleted=`echo -n "${status}" 2> /dev/null | grep "deleted:" &> /dev/null; echo "$?"`
+    status=$(git status 2>&1 | tee)
+	dirty=$(echo -n "${status}" 2> /dev/null \
+        | grep "modified:" &> /dev/null; echo "$?")
+    untracked=$(`echo -n "${status}" 2> /dev/null \
+        | grep "Untracked files" &> /dev/null; echo "$?")
+	ahead=$(echo -n "${status}" 2> /dev/null \
+        | grep "Your branch is ahead of" &> /dev/null; echo "$?")
+	newfile=$(echo -n "${status}" 2> /dev/null \
+        | grep "new file:" &> /dev/null; echo "$?")
+	renamed=$(echo -n "${status}" 2> /dev/null \
+        | grep "renamed:" &> /dev/null; echo "$?")
+	deleted=$(echo -n "${status}" 2> /dev/null \
+        | grep "deleted:" &> /dev/null; echo "$?")
 	bits=''
 	if [ "${renamed}" == "0" ]; then
 		bits=">${bits}"
@@ -175,6 +145,7 @@ alias tetris="tint -n -d -s"
 alias lf="lfub"
 alias gotop="gotop -l procs"
 alias sshserver="ssh root@185.70.187.106"
+alias ?="google"
 
 # change directory
 alias cdc="cd $HOME/Documents/code/"
@@ -183,6 +154,7 @@ alias cdbin="cd $HOME/.local/bin/"
 alias cdz="cd $HOME/Documents/zettelkasten/"
 alias cdtmp="cd $(mktemp -d)"
 alias cdsnip="cd $SNIPPETS"
+alias cdvimplug="cd $XDG_DATA_HOME/vim/plugins/"
 
 # ----- FUNCTIONS ----- #
 
@@ -205,7 +177,7 @@ bind '"\C-o":"lfcd\C-m"'
 
 # ----- COMPLETION ----- #
 
-COMPLETION_DIR="/usr/share/bash-completion/completions"
+#COMPLETION_DIR="/usr/share/bash-completion/completions"
 # for file in $COMPLETION_DIR/*; do
 #     source "$file"
 # done
