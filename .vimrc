@@ -11,6 +11,7 @@ set incsearch           " Incremental search
 set autowrite           " Automatically save when editing multiple files
 set hidden              " Hide buffers when they are abandoned
 set encoding=utf-8
+set path+=**            " Enable recursive :find(remove for big projects)
 
 set scrolloff=5
 set number              " Show line numbers
@@ -153,6 +154,8 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
     Plug 'chrisbra/Colorizer'
     Plug 'VSngg/solarfog.vim'
     Plug 'andreasvc/vim-256noir'
+    Plug 'junegunn/goyo.vim'
+    Plug 'justinmk/vim-dirvish'
     call plug#end()
 endif
 
