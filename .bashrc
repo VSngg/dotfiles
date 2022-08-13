@@ -145,7 +145,8 @@ alias tetris="tint -n -d -s"
 alias lf="lfub"
 alias gotop="gotop -l procs"
 alias sshserver="ssh root@185.70.187.106"
-alias ?="google"
+alias ?="searxsearch"
+alias ??="google"
 
 # change directory
 alias cdc="cd $HOME/Documents/code/"
@@ -183,3 +184,4 @@ bind '"\C-o":"lfcd\C-m"'
 # done
 
 source /usr/share/bash-completion/bash_completion
+source /home/vs/.local/share/snip/snip_completion.bash
