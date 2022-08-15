@@ -1,0 +1,16 @@
+#!/bin/sh
+
+modname="$@"
+
+main() {
+    mkdir "$modname"
+    touch "$modname/$modname.go"
+    vim "$modname/$modname.go"
+}
+
+if test "$#" -lt 1; then
+    echo "usage: newmod <name>" >&2
+    exit
+fi
+
+main
