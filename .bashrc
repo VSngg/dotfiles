@@ -25,6 +25,9 @@ export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
 
 export SNIPPETS="$XDG_DATA_HOME/snip/"
 export ZETDIR="$HOME/Documents/zettelkasten/"
+export CODE="$HOME/Documents/code/"
+
+export CDPATH=".:$CODE:$HOME"
 
 export QT_QPA_PLATFORM=wayland
 export ELINKS_CONFDIR="$XDG_CONFIG_HOME"/elinks
@@ -33,6 +36,7 @@ export ELINKS_CONFDIR="$XDG_CONFIG_HOME"/elinks
     LF_ICONS="$(tr '\n' ':' <~/.config/lf/LF_ICONS)" \
         && export LF_ICONS
 }
+
 
 # ----- DIRCOLORS ----- #
 
@@ -117,6 +121,9 @@ function parse_git_dirty {
 
 export PS1="\[\e[31m\]\u\[\e[m\]@\[\e[36m\]\h\[\e[m\] \[\e[35m\]\W\[\e[m\] \[\e[34m\]\`parse_git_branch\`\[\e[m\]\\$ "
 
+# ----- stty disable ctrl-s ----- #
+
+stty stop undef
 
 # ----- ALIASES ----- #
 
@@ -138,6 +145,7 @@ alias chmox="chmod +x"
 
 # random
 alias hx="helix"
+alias info="info --vi-keys"
 alias c="clear"
 alias weather="curl ru.wttr.in"
 alias toipe="toipe -w top1000"
