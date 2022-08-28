@@ -18,11 +18,14 @@ set number              " Show line numbers
 set cursorline          " Highlight cursorline
 "set cursorcolumn       " Highlight cursorcolumn
 set colorcolumn=81
+set splitbelow
+set splitright
 
 set ttyfast             " Faster scrolling
 set ttymouse=xterm2     " Allow mouse clicks inside tmux
 set mouse=a
 set viminfo='20,<1000,s1000
+set noswapfile
 set report=0            " Tell when anyting is changed by : <cmd>
 set clipboard=unnamedplus
 
@@ -153,9 +156,9 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
     Plug 'jaredgorski/fogbell.vim'
     Plug 'chrisbra/Colorizer'
     Plug 'VSngg/solarfog.vim'
-    Plug 'andreasvc/vim-256noir'
     Plug 'junegunn/goyo.vim'
-    Plug 'justinmk/vim-dirvish'
+    Plug 'junegunn/fzf.vim'
+    Plug 'jiangmiao/auto-pairs'
     call plug#end()
 endif
 
@@ -215,3 +218,4 @@ function! ToggleVExplorer()
 endfunction
 
 map <silent> <leader>e :call ToggleVExplorer()<CR>
+map <silent> <leader>f :Files<CR>
