@@ -15,6 +15,8 @@ export PATH=$PATH:$(go env GOPATH)/bin
 export PATH=/home/vs/.cargo/bin:$PATH
 export PATH=/home/vs/.local/bin:$PATH
 
+export GOPATH=$(go env GOPATH)
+
 export BAT_THEME="Solarized (dark)"
 export KDEHOME="$XDG_CONFIG_HOME/kde"
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -31,6 +33,11 @@ export CDPATH=".:$CODE:$HOME"
 
 export QT_QPA_PLATFORM=wayland
 export ELINKS_CONFDIR="$XDG_CONFIG_HOME"/elinks
+
+export FZF_DEFAULT_OPTS="
+--color fg:-1,bg:-1,hl:#268bd2,fg+:#eee8d5,bg+:#073642,hl+:#268bd2
+--color info:#b58900,prompt:#b58900,pointer:#fdf6e3
+--color marker:#fdf6e3,spinner:#b58900"
 
 [ -f ~/.config/lf/LF_ICONS ] && {
     LF_ICONS="$(tr '\n' ':' <~/.config/lf/LF_ICONS)" \
@@ -78,7 +85,6 @@ __ps1() {
 
 PROMPT_COMMAND="__ps1"
 
-
 # ----- stty disable ctrl-s ----- #
 
 stty stop undef
@@ -105,6 +111,7 @@ alias chmox="chmod +x"
 alias hx="helix"
 alias info="info --vi-keys"
 alias c="clear"
+alias x="exit"
 alias weather="curl ru.wttr.in"
 alias toipe="toipe -w top1000"
 alias tetris="tint -n -d -s"
@@ -113,6 +120,8 @@ alias gotop="gotop -l procs"
 alias sshserver="ssh root@185.70.187.106"
 alias ?="searxsearch"
 alias ??="google"
+alias newjup="python -m jupyter_ascending.scripts.make_pair --base"
+alias jl="jupyter-lab"
 
 # change directory
 alias cdc="cd $HOME/Documents/code/"
@@ -151,3 +160,4 @@ bind '"\C-o":"lfcd\C-m"'
 
 source /usr/share/bash-completion/bash_completion
 source /home/vs/.local/share/snip/snip_completion.bash
+source /home/vs/.nix-profile/share/bash-completion/completions/nix
