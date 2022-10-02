@@ -12,9 +12,10 @@ vim.opt.colorcolumn = "81"
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
 -- add your own keymapping
--- lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
-lvim.keys.normal_mode["<S-l>"] = ":BufferLineCycleNext<CR>"
-lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
+-- lvim.keys.normal_mode["<S-l>"] = ":BufferLineCycleNext<CR>"
+-- lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
+vim.keymap.set("n", "<S-h>", "<Plug>(CybuPrev)")
+vim.keymap.set("n", "<S-l>", "<Plug>(CybuNext)")
 
 -- Use which-key to add extra bindings with the leader-key prefix
 lvim.builtin.which_key.mappings["t"] = {
@@ -68,4 +69,21 @@ lvim.plugins = {
     },
     { "ishan9299/nvim-solarized-lua" },
     { "fatih/vim-go" },
+    { "ghillb/cybu.nvim" },
+}
+
+require("cybu").setup {
+    postion = {
+        relative_to = "win",
+        anchor = "topright",
+    },
+    behavior = {
+        mode = {
+            default = {
+                switch = "immediate",
+                view = "rolling", -- paging, rolling
+            }
+        }
+    },
+    display_time = 1750,
 }
