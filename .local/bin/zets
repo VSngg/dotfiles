@@ -12,7 +12,8 @@ findzettels() {
     else
         grep -ril "$*" "$ZETDIR" 
     fi
-    
 }
 
-findzettels "$@" | fzf --preview 'bat -l md --color=always --decorations=never {}' | xargs -o "$EDITOR"
+findzettels "$@" \
+    | fzf --preview 'bat -l md --color=always --decorations=never {}' \
+    | xargs -r "$EDITOR"

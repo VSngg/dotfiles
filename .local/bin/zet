@@ -4,9 +4,7 @@ timestamp=$(date +%Y%m%d-%H%M%S)
 filepath="$HOME/Documents/zettelkasten/$timestamp.md"
 
 create_zettel () {
-    touch "$filepath"
     "$EDITOR" "$filepath"
 }
 
-echo "$timestamp created!"
 create_zettel  
