@@ -1,0 +1,18 @@
+{
+    "seed": {
+        "prefix": "hello",
+        "body": [
+            "rand.Seed(time.Now().UTC().UnixNano())"
+        ],
+        "description": "random seed of rand functions"
+    }
+}
+{
+    "seed": {
+        "prefix": "err",
+        "body": [
+            "if err != nil{ }"
+        ],
+        "description": "if err is not equal nil"
+    }
+}
