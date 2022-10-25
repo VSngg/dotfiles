@@ -63,43 +63,6 @@ font:
     # The `style` can be specified to pick a specific face.
     style: Regular
 
-  # Bold font face
-  bold:
-    # Font family
-    #
-    # If the bold family is not specified, it will fall back to the
-    # value specified for the normal font.
-    # family: UbuntuMono Nerd Font
-    # family: Mononoki Nerd Font
-    # family: Cozette
-
-    # The `style` can be specified to pick a specific face.
-    style: Bold
-
-  # Italic font face
-  italic:
-    # Font family
-    #
-    # If the italic family is not specified, it will fall back to the
-    # value specified for the normal font.
-    # family: Mononoki Nerd Font
-    # family: Cozette
-
-    # The `style` can be specified to pick a specific face.
-    style: Italic
-
-  # Bold italic font face
-  bold_italic:
-    # Font family
-    #
-    # If the bold italic family is not specified, it will fall back to the
-    # value specified for the normal font.
-    # family: Mononoki Nerd Font
-    # family: Cozette
-
-    # The `style` can be specified to pick a specific face.
-    style: Bold Italic
-
   # Point size
   size: 15.0
 
@@ -153,66 +116,6 @@ schemes:
       magenta: '#d3869b'
       cyan:    '#8ec07c'
       white:   '#ebdbb2'
-  ### Srcery ###
-  Srcery: &Srcery
-    primary:
-      background: '#1c1b19'
-      foreground: '#fce8c3'
-
-    # Cursor colors
-    cursor:
-      text: CellBackground
-      cursor: '#fbb829'
-
-    # Normal colors
-    normal:
-      black:   '#1c1b19'
-      red:     '#ef2f27'
-      green:   '#519f50'
-      yellow:  '#fbb829'
-      blue:    '#2c78bf'
-      magenta: '#e02c6d'
-      cyan:    '#0aaeb3'
-      white:   '#baa67f'
-
-    # Bright colors
-    bright:
-      black:   '#918175'
-      red:     '#f75341'
-      green:   '#98bc37'
-      yellow:  '#fed06e'
-      blue:    '#68a8e4'
-      magenta: '#ff5c8f'
-      cyan:    '#2be4d0'
-      white:   '#fce8c3'
-  ### Sourcerer ###
-  Sourcerer: &Sourcerer
-  # Default colors
-    primary:
-      background: '0x222222'
-      foreground: '0xc2c2b0'
-
-    # Normal colors
-    normal:
-      black:   '0x111111'
-      red:     '0xaa4450'
-      green:   '0x719611'
-      yellow:  '0xff9800'
-      blue:    '0x6688aa'
-      magenta: '0x8f6f8f'
-      cyan:    '0x528b8b'
-      white:   '0xd3d3d3'
-
-    # Bright colors
-    bright:
-      black:   '0x181818'
-      red:     '0xff6a6a'
-      green:   '0xb1d631'
-      yellow:  '0x87875f'
-      blue:    '0x90b0d1'
-      magenta: '0x8181a6'
-      cyan:    '0x87ceeb'
-      white:   '0xc1cdc1'
   ### Solarized ###
   Solarized: &Solarized
     primary:
@@ -240,32 +143,35 @@ schemes:
       magenta: '0x6c71c4'
       cyan:    '0x93a1a1'
       white:   '0xfdf6e3'
-  ### Nord ###
-	Nordic: &Nordic
-		primary:
-			background: '#2e3440'
-			foreground: '#d8dee9'
-		cursor:
-			text: '#2e3440'
-			cursor: '#d8dee9'
-		normal:
-			black: '#3b4252'
-			red: '#bf616a'
-			green: '#a3be8c'
-			yellow: '#ebcb8b'
-			blue: '#81a1c1'
-			magenta: '#b48ead'
-			cyan: '#88c0d0'
-			white: '#e5e9f0'
-		bright:
-			black: '#4c566a'
-			red: '#bf616a'
-			green: '#a3be8c'
-			yellow: '#ebcb8b'
-			blue: '#81a1c1'
-			magenta: '#b48ead'
-			cyan: '#8fbcbb'
-			white: '#eceff4'
+  ### Solarized - Patched ###
+  SolarizedPatched: &SolarizedPatched
+    bright:
+      black:   '#475b62'
+      blue:    '#708284'
+      cyan:    '#819090'
+      green:   '#475b62'
+      magenta: '#5956ba'
+      red:     '#bd3613'
+      white:   '#fcf4dc'
+      yellow:  '#536870'
+    cursor:
+      cursor:  '#708284'
+      text:    '#002831'
+    normal:
+      black:   '#002831'
+      blue:    '#2176c7'
+      cyan:    '#259286'
+      green:   '#738a05'
+      magenta: '#c61c6f'
+      red:     '#d11c24'
+      white:   '#eae3cb'
+      yellow:  '#a57706'
+    primary:
+      background: '#001e27'
+      foreground: '#708284'
+    selection:
+      background: '#002831'
+      text: '#819090'
 
 ######################################################################
 ## SET THEME: Choose ONE color scheme from those in the above list. ##
@@ -277,10 +183,7 @@ schemes:
 # *Solarized
 # *Nord
 
-colors: *Solarized
-
-
-
+colors: *SolarizedPatched
 
 #######################################
 ##       END OF COLOR SCHEMES        ##
@@ -302,7 +205,7 @@ cursor:
   #   - | Beam
   style: 
     shape: Block
-    blinking: On
+    blinking: off
   unfocused_hollow: true
   blink_interval: 1000
 
@@ -314,7 +217,7 @@ cursor:
 #   - (Linux/BSD) user login shell
 #   - (Windows) powershell
 shell:
-  program: /bin/zsh
+  program: /bin/bash
   args:
     - --login
 
