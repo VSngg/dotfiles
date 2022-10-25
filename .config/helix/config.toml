@@ -1,5 +1,18 @@
-theme = "solarized"
+theme = "noctis"
 
+[editor]
+cursorline = true
+mouse = false
+rulers = [80]
+color-modes = true
 
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
 
-
+[editor.statusline]
+left = ["mode", "spinner"]
+center = ["file-name"]
+right = ["diagnostics", "selections", "position"]
+separator = "|"
