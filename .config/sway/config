@@ -9,14 +9,15 @@ set $right l
 # Your preferred terminal emulator
 set $term foot
 # set $menu dmenu_path | dmenu | xargs swaymsg exec --
-# set $menu bemenu-run '-I 0 -i -l 10 -p ">_" -W 0.3 --fn "mononoki Nerd Font Mono:10" --nb "#282828" --nf "#ebdbb2" --sf "#282828" --sb "#f4800d" --tb "#282828" --tf "#ebdbb2" --hb "#ebdbb2" --hf "#282828"'| xargs swaymsg exec --
-set $menu yofi | xargs swaymsg exec --
+# set $menu yofi | xargs swaymsg exec --
+set $menu sirula
 
 ### Output configuration
 #
-output * bg ~/Pictures/wallpapers/sepia-nature-lake-mountains.jpg fill
+output * bg ~/Pictures/wallpapers/solarcapy.jpg fill
 ### Idle configuration
 #
+
 exec swayidle -w \
          timeout 300 'swaylock -f -c 000000' \
          timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
@@ -46,6 +47,7 @@ input "type:keyboard" {
 
 # exec mako
 exec nm-applet --indicator
+exec autotiling
 
 ### Key bindings
 #
@@ -58,7 +60,7 @@ exec nm-applet --indicator
     bindsym $mod+q kill
 
     # Start your launcher
-    bindsym $mod+d exec $menu
+    bindsym $mod+r exec $menu
 
     # Start browser
     bindsym $mod+b exec firefox
@@ -141,13 +143,13 @@ exec nm-applet --indicator
     bindsym $mod+e layout toggle split
 
     # Make the current focus fullscreen
-    bindsym $mod+f fullscreen
+    bindsym $mod+m fullscreen
 
     # Toggle the current focus between tiling and floating mode
-    bindsym $mod+Shift+space floating toggle
+    bindsym $mod+f floating toggle
 
     # Swap focus between the tiling area and the floating area
-    bindsym $mod+space focus mode_toggle
+    bindsym $mod+Shift+f focus mode_toggle
 
     # Move focus to the parent container
     bindsym $mod+a focus parent
@@ -206,7 +208,7 @@ mode "resize" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-bindsym $mod+r mode "resize"
+bindsym $mod+shift+r mode "resize"
 
 #
 # Status Bar:
@@ -214,46 +216,47 @@ bindsym $mod+r mode "resize"
 include colorscheme
 
 # Read `man 5 sway-bar` for more information about this section.
-bar {
-    position top
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
-    # status_command while date +'%Y-%m-%d %H:%M:%S '; do sleep 1; done
-    status_command i3status
-
-    colors {
-    background $base00
-    separator  $base03
-    statusline $base04
-
-    #                   Border  BG      Text
-    focused_workspace   $base05 $base0A $base00
-    active_workspace    $base05 $base03 $base00
-    inactive_workspace  $base03 $base01 $base05
-    urgent_workspace    $base08 $base08 $base00
-    binding_mode        $base00 $base0A $base00
-    }
-}
+# bar {
+#     position top
+#     # When the status_command prints a new line to stdout, swaybar updates.
+#     # The default just shows the current date and time.
+#     # status_command while date +'%Y-%m-%d %H:%M:%S '; do sleep 1; done
+#     status_command ~/.local/bin/swaystatus ~/.config/sway/swaystatus.json
+# 
+#     colors {
+#     background $base00
+#     separator  $base03
+#     statusline $base04
+# 
+#     #                   Border  BG      Text
+#     focused_workspace   $base05 $base0C $base00
+#     active_workspace    $base05 $base03 $base00
+#     inactive_workspace  $base03 $base01 $base05
+#     urgent_workspace    $base08 $base08 $base00
+#     binding_mode        $base00 $base0C $base00
+#     }
+# }
 
 #                       Border  BG      Text    Ind     Child Border
-client.focused          $base05 $base0A $base00 $base0A $base0A
+client.focused          $base05 $base02 $base00 $base04 $base0C
 client.focused_inactive $base01 $base01 $base05 $base03 $base01
 client.unfocused        $base01 $base00 $base05 $base01 $base01
 client.urgent           $base08 $base08 $base00 $base08 $base08
 
-# bar swaybar_command waybar
+bar swaybar_command waybar
 # Set inner/outer gaps
-# gaps inner 0
-# gaps outer 0
+gaps inner 5
+gaps outer 2
 
 # Hide titlebar on windows:
 default_border pixel 2
 
 # Default Font
-font pango:mononoki Nerd Font Mono 10
+font pango:Iosevka Mono Nerd Font 10
 
 # Thin borders:
 smart_borders on
-# smart_gaps on
+smart_gaps on
 
 include /etc/sway/config.d/*
+include shotman.conf

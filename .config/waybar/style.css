@@ -1,13 +1,13 @@
 * {
     /* `otf-font-awesome` is required to be installed for icons */
-    font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
-    font-size: 13px;
+    font-family: Iosevka, Helvetica, Arial, sans-serif;
+    font-size: 19px;
 }
 
 window#waybar {
-    background-color: rgba(43, 48, 59, 0.5);
-    border-bottom: 3px solid rgba(100, 114, 125, 0.5);
-    color: #ffffff;
+    background-color: #001e27;
+    /* border-bottom: 3px solid rgba(100, 114, 125, 0.5); */
+    color: #708284;
     transition-property: background-color;
     transition-duration: .5s;
 }
@@ -37,7 +37,7 @@ window#waybar.chromium {
 #workspaces button {
     padding: 0 5px;
     background-color: transparent;
-    color: #ffffff;
+    color: #708284;
     /* Use box-shadow instead of border so the text isn't offset */
     box-shadow: inset 0 -3px transparent;
     /* Avoid rounded borders under each workspace name */
@@ -52,8 +52,9 @@ window#waybar.chromium {
 }
 
 #workspaces button.focused {
-    background-color: #64727D;
-    box-shadow: inset 0 -3px #ffffff;
+    background-color: #536870;
+    box-shadow: inset 0 -3px #708284;
+    color: #002831;
 }
 
 #workspaces button.urgent {
@@ -61,7 +62,7 @@ window#waybar.chromium {
 }
 
 #mode {
-    background-color: #64727D;
+    background-color: #536870;
     border-bottom: 3px solid #ffffff;
 }
 
@@ -80,7 +81,7 @@ window#waybar.chromium {
 #idle_inhibitor,
 #mpd {
     padding: 0 10px;
-    color: #ffffff;
+    color: #708284;
 }
 
 #window,
@@ -99,17 +100,17 @@ window#waybar.chromium {
 }
 
 #clock {
-    background-color: #64727D;
+    background-color: #002831;
 }
 
 #battery {
-    background-color: #ffffff;
-    color: #000000;
+    background-color: #002831;
+    color: #708284;
 }
 
 #battery.charging, #battery.plugged {
     color: #ffffff;
-    background-color: #26A65B;
+    background-color: #738a05;
 }
 
 @keyframes blink {
@@ -139,19 +140,24 @@ label:focus {
 }
 
 #memory {
-    background-color: #9b59b6;
-}
-
-#disk {
-    background-color: #964B00;
+    background-color: #002831;
 }
 
 #backlight {
-    background-color: #90b1b1;
+    background-color: #002831;
 }
 
+#backlight.low {
+   color: #536870;
+}
+
+#backlight.high {
+   color: #ffffff;
+}
+
+
 #network {
-    background-color: #2980b9;
+    background-color: #002831;
 }
 
 #network.disconnected {
@@ -159,8 +165,8 @@ label:focus {
 }
 
 #pulseaudio {
-    background-color: #f1c40f;
-    color: #000000;
+    background-color: #002831;
+    color: #708284;
 }
 
 #pulseaudio.muted {
@@ -168,30 +174,9 @@ label:focus {
     color: #2a5c45;
 }
 
-#custom-media {
-    background-color: #66cc99;
-    color: #2a5c45;
-    min-width: 100px;
-}
-
-#custom-media.custom-spotify {
-    background-color: #66cc99;
-}
-
-#custom-media.custom-vlc {
-    background-color: #ffa000;
-}
-
-#temperature {
-    background-color: #f0932b;
-}
-
-#temperature.critical {
-    background-color: #eb4d4b;
-}
 
 #tray {
-    background-color: #2980b9;
+    background-color: #002831;
 }
 
 #tray > .passive {
@@ -212,28 +197,10 @@ label:focus {
     color: #2d3436;
 }
 
-#mpd {
-    background-color: #66cc99;
-    color: #2a5c45;
-}
-
-#mpd.disconnected {
-    background-color: #f53c3c;
-}
-
-#mpd.stopped {
-    background-color: #90b1b1;
-}
-
-#mpd.paused {
-    background-color: #51a37a;
-}
-
 #language {
-    background: #00b093;
-    color: #740864;
+    background: #002831;
+    color: #708284;
     padding: 0 5px;
-    margin: 0 5px;
     min-width: 16px;
 }
 
