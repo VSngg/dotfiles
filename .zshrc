@@ -110,3 +110,5 @@ eval "$(dircolors -b "$HOME/.dircolors")"
 # Load syntax highlighting; should be last.
 source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null
 source /usr/share/zsh/plugins/zsh-interactive-cd/zsh-interactive-cd.plugin.zsh 2>/dev/null
+
+if [ -e /home/vs/.nix-profile/etc/profile.d/nix.sh ]; then . /home/vs/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer

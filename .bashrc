@@ -1,6 +1,8 @@
 #
 # ~/.bashrc
 #
+# shellcheck disable=SC2148,SC2034
+
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
@@ -14,6 +16,7 @@ export TERM=xterm-256color
 export PATH=$PATH:$(go env GOPATH)/bin
 export PATH=/home/vs/.cargo/bin:$PATH
 export PATH=/home/vs/.local/bin:$PATH
+export PATH=/home/vs/.nimble/bin:$PATH
 
 export GOPATH=$(go env GOPATH)
 
@@ -118,19 +121,20 @@ alias tetris="tint -n -d -s"
 alias lf="lfub"
 alias gotop="gotop -l procs"
 alias sshserver="ssh root@185.70.187.106"
-alias ?="searxsearch"
-alias ??="google"
+alias w3m="w3m -4"
+alias '?'="searxsearch"
+alias '??'="google"
 alias newjup="python -m jupyter_ascending.scripts.make_pair --base"
 alias jl="jupyter-lab"
 
 # change directory
-alias cdc="cd $HOME/Documents/code/"
-alias cdcf="cd $HOME/.config/"
-alias cdbin="cd $HOME/.local/bin/"
-alias cdz="cd $HOME/Documents/zettelkasten/"
-alias cdtmp="cd $(mktemp -d)"
-alias cdsnip="cd $SNIPPETS"
-alias cdvimplug="cd $XDG_DATA_HOME/vim/plugins/"
+alias cdc='cd $HOME/Documents/code/'
+alias cdcf='cd $HOME/.config/'
+alias cdbin='cd $HOME/.local/bin/'
+alias cdz='cd $HOME/Documents/zettelkasten/'
+alias cdtmp='cd $(mktemp -d)'
+alias cdsnip='cd $SNIPPETS'
+alias cdvimplug='cd $XDG_DATA_HOME/vim/plugins/'
 
 # ----- FUNCTIONS ----- #
 
@@ -157,7 +161,8 @@ bind '"\C-o":"lfcd\C-m"'
 # for file in $COMPLETION_DIR/*; do
 #     source "$file"
 # done
+source <(carapace _carapace)
 
-source /usr/share/bash-completion/bash_completion
-source /home/vs/.local/share/snip/snip_completion.bash
-source /home/vs/.nix-profile/share/bash-completion/completions/nix
+# source /usr/share/bash-completion/bash_completion
+# source /home/vs/.local/share/snip/snip_completion.bash
+# source /home/vs/.nix-profile/share/bash-completion/completions/nix

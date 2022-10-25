@@ -151,7 +151,6 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
     Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
     Plug 'altercation/vim-colors-solarized'
     Plug 'lifepillar/vim-mucomplete'
-    Plug 'lifepillar/vim-solarized8'
     Plug 'ap/vim-buftabline'
     Plug 'jaredgorski/fogbell.vim'
     Plug 'chrisbra/Colorizer'
@@ -159,6 +158,8 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
     Plug 'junegunn/goyo.vim'
     Plug 'junegunn/fzf.vim'
     Plug 'jiangmiao/auto-pairs'
+    Plug 'davidhalter/jedi-vim'
+    Plug 'christoomey/vim-tmux-navigator'
     call plug#end()
 endif
 
@@ -168,7 +169,7 @@ set background=dark
 colorscheme solarfog
 set termguicolors
 
-" ----- vim-go setup ----- "
+" ----- vim-go Setup ----- "
 
 let g:go_fmt_fail_silently = 0
 let g:go_fmt_command = 'goimports'
@@ -186,8 +187,9 @@ let g:go_highlight_build_constraints = 1
 let g:go_highlight_diagnostic_errors = 1
 let g:go_highlight_diagnostic_warnings = 1
 let g:go_auto_sameids = 0
+let g:go_doc_popup_window = 1
 
-" ----- netrw setup ----- "
+" ----- Netrw Setup ----- "
 
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
@@ -216,6 +218,8 @@ function! ToggleVExplorer()
          let t:expl_buf_num = bufnr("%")
     endif
 endfunction
+
+" ----- Plugin Keymaps ----- "
 
 map <silent> <leader>e :call ToggleVExplorer()<CR>
 map <silent> <leader>f :Files<CR>
