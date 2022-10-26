@@ -1,0 +1,33 @@
+.app-row {
+    transition: unset;
+    padding: 5px 0 5px 10px;
+    background-color: #002831;
+}
+
+.app-row:selected {
+    background-color: #819090;
+}
+
+.app-label {
+    margin-left: 10px;
+    font-family: Iosevka;
+    font-size: 18px;
+    font-weight: 300;
+}
+
+.app-list {
+    background-color: #f00;
+ }
+
+#root-box {
+    border: 3px solid #002831;
+    margin: 100px;
+    background-color: #002831;
+}
+
+#search {
+    font-family: Iosevka;
+    font-size: 18px;
+    padding: 2px 8px;
+    margin: 5px;
+}
