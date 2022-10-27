@@ -7,16 +7,38 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+# ----- PATH ----- #
+pathappend() {
+    declare arg
+    for arg in "$@"; do
+        test -d "$arg" || continue
+        PATH=${PATH//":$arg:"/:}
+        PATH=${PATH/#"$arg:"/}
+        PATH=${PATH/%":$arg"/}
+        export PATH="${PATH:+"$PATH:"}$arg"
+    done
+} && export -f pathappend
+
+pathprepend() {
+    for arg in "$@"; do
+        test -d "$arg" || continue
+        PATH=${PATH//:"$arg:"/:}
+        PATH=${PATH/#"$arg:"/}
+        PATH=${PATH/%":$arg"/}
+        export PATH="$arg${PATH:+":${PATH}"}"
+    done
+} && export -f pathprepend
+
+pathprepend \
+    "/home/vs/.local/bin" \
+    "/home/vs/.cargo/bin" \
+    "/home/vs/go/bin" \
+
 # ----- ENVIRONMENTAL VARIABLES ----- #
 
 export EDITOR="vim"
 export BROWSER="firefox"
 export TERM=xterm-256color
-
-export PATH=$PATH:$(go env GOPATH)/bin
-export PATH=/home/vs/.cargo/bin:$PATH
-export PATH=/home/vs/.local/bin:$PATH
-export PATH=/home/vs/.nimble/bin:$PATH
 
 export GOPATH=$(go env GOPATH)
 

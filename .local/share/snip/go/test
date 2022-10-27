@@ -1,7 +1,0 @@
-func TestThis(t *testing.T) {
-	got := "got"
-	want := "want"
-	if got != want {
-		t.Errorf("\n want: %q \n got: %q\n", want, got)
-	}
-}
