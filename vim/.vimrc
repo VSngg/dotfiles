@@ -15,6 +15,7 @@ set path+=**            " Enable recursive :find(remove for big projects)
 
 set scrolloff=5
 set number              " Show line numbers
+set relativenumber      " Set relative numbers
 set cursorline          " Highlight cursorline
 "set cursorcolumn       " Highlight cursorcolumn
 set colorcolumn=81
