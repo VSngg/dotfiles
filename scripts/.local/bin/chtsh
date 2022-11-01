@@ -1,0 +1,4 @@
+#!/bin/bash
+
+ARGS="$@"
+tmux neww bash -c "cht.sh $ARGS | bat"
