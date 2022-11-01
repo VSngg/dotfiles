@@ -7,6 +7,9 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+# ----- Utility functions ----- #
+_have()    { type "$1" &>/dev/null; }
+
 # ----- PATH ----- #
 pathappend() {
     declare arg
@@ -40,7 +43,7 @@ export EDITOR="vim"
 export BROWSER="firefox"
 export TERM=xterm-256color
 
-export GOPATH=$(go env GOPATH)
+_have go && export GOPATH=$(go env GOPATH)
 
 export BAT_THEME="Solarized (dark)"
 export KDEHOME="$XDG_CONFIG_HOME/kde"
@@ -72,10 +75,12 @@ export FZF_DEFAULT_OPTS="
 
 # ----- DIRCOLORS ----- #
 
-if [[ -r "$HOME/.dircolors" ]]; then
-    eval "$(dircolors -b "$HOME/.dircolors")"
-else
-    eval "$(dircolors -b)"
+if _have dircolors; then
+    if [[ -r "$HOME/.dircolors" ]]; then
+        eval "$(dircolors -b "$HOME/.dircolors")"
+    else
+        eval "$(dircolors -b)"
+    fi
 fi
 
 # ----- BASH SHELL OPTIONS ----- #
@@ -128,15 +133,23 @@ alias bc="bc -ql"
 alias mkdir="mkdir -pv"
 
 alias ls="ls -hN --color=auto --group-directories-first"
-alias ll="ls -alhN --color=auto --group-directories-first"
-alias la="ls -AhN --color=auto --group-directories-first"
+
+if _have exa; then
+    alias ll="exa -alh --group-directories-first"
+    alias la="exa -a --group-directories-first"
+else
+    alias ll="ls -alhN --color=auto --group-directories-first"
+    alias la="ls -AhN --color=auto --group-directories-first"
+fi
+
 alias chmox="chmod +x"
+
+alias c="clear"
+alias x="exit"
 
 # random
 alias hx="helix"
 alias info="info --vi-keys"
-alias c="clear"
-alias x="exit"
 alias weather="curl ru.wttr.in"
 alias toipe="toipe -w top1000"
 alias tetris="tint -n -d -s"
@@ -153,6 +166,7 @@ alias jl="jupyter-lab"
 alias cdc='cd $HOME/Documents/code/'
 alias cdcf='cd $HOME/.config/'
 alias cdbin='cd $HOME/.local/bin/'
+alias cddot='cd $HOME/git/dotfiles'
 alias cdz='cd $HOME/Documents/zettelkasten/'
 alias cdtmp='cd $(mktemp -d)'
 alias cdsnip='cd $SNIPPETS'
@@ -175,7 +189,6 @@ lfcd () {
 }
 
 bind '"\C-o":"lfcd\C-m"'
-
 
 # ----- COMPLETION ----- #
 
