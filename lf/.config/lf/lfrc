@@ -3,6 +3,7 @@ set shellopts '-eu'
 set ifs "\n"
 set scrolloff 10
 set drawbox
+set hidden!
 map <enter> shell
 
 # execute current file (must be executable)
