@@ -39,19 +39,19 @@ pathprepend \
 
 # ----- ENVIRONMENTAL VARIABLES ----- #
 
-export EDITOR="vim"
+export EDITOR="nvim"
 export BROWSER="firefox"
 export TERM=xterm-256color
 
 _have go && export GOPATH=$(go env GOPATH)
 
 export BAT_THEME="Solarized (dark)"
-export KDEHOME="$XDG_CONFIG_HOME/kde"
+_have batcat && export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_STATE_HOME="$HOME/.local/state"
-export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
 
 export SNIPPETS="$XDG_DATA_HOME/snip/"
 export ZETDIR="$HOME/Documents/zettelkasten/"
@@ -148,7 +148,6 @@ alias c="clear"
 alias x="exit"
 
 # random
-alias hx="helix"
 alias info="info --vi-keys"
 alias weather="curl ru.wttr.in"
 alias toipe="toipe -w top1000"
@@ -163,14 +162,7 @@ alias newjup="python -m jupyter_ascending.scripts.make_pair --base"
 alias jl="jupyter-lab"
 
 # change directory
-alias cdc='cd $HOME/Documents/code/'
-alias cdcf='cd $HOME/.config/'
-alias cdbin='cd $HOME/.local/bin/'
-alias cddot='cd $HOME/git/dotfiles'
-alias cdz='cd $HOME/Documents/zettelkasten/'
 alias cdtmp='cd $(mktemp -d)'
-alias cdsnip='cd $SNIPPETS'
-alias cdvimplug='cd $XDG_DATA_HOME/vim/plugins/'
 
 # ----- FUNCTIONS ----- #
 
@@ -190,14 +182,27 @@ lfcd () {
 
 bind '"\C-o":"lfcd\C-m"'
 
+cdf() { 
+	if [[ ! -f "$XDG_CONFIG_HOME"/dirlist ]]; then 
+	    touch "$XDG_CONFIG_HOME"/dirlist; 
+	fi 
+	if [[ -n "$1" ]]; then 
+		if [[ $(grep "${PWD}" "$XDG_CONFIG_HOME"/dirlist) ]]; then 
+			echo "${PWD} already added to dirlist" 
+		else 
+			echo "${PWD}" >> "$XDG_CONFIG_HOME"/dirlist \
+			&& echo "Added ($PWD) to dirlist!" 
+		fi 
+	else 
+		local dirlist=$(fzf --height="30%" --header="Change directory to:" \
+		--preview="(ls -A --color "{1}")" --preview-window=right:50%:border \
+		< "$XDG_CONFIG_HOME"/dirlist) && cd ${dirlist} 
+	fi 
+}
+
 # ----- COMPLETION ----- #
 
-#COMPLETION_DIR="/usr/share/bash-completion/completions"
-# for file in $COMPLETION_DIR/*; do
-#     source "$file"
-# done
-source <(carapace _carapace)
+_have carapace && source <(carapace _carapace)
 
 # source /usr/share/bash-completion/bash_completion
-# source /home/vs/.local/share/snip/snip_completion.bash
 # source /home/vs/.nix-profile/share/bash-completion/completions/nix
