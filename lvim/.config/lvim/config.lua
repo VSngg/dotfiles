@@ -29,14 +29,13 @@ vim.keymap.set('n', "<C-j>", '<CMD>NavigatorDown<CR>')
 ------------------------
 lvim.builtin.alpha.active = true
 lvim.builtin.alpha.mode = "dashboard"
-lvim.builtin.notify.active = true
 lvim.builtin.terminal.active = true
 lvim.builtin.bufferline.active = false
 lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
 lvim.builtin.nvimtree.setup.view.width = 20
 lvim.builtin.nvimtree.setup.view.signcolumn = "auto"
-lvim.builtin.breadcrumbs.active = false
+lvim.builtin.breadcrumbs.active = true
 lvim.lsp.diagnostics.virtual_text = false
 
 
