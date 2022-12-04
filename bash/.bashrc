@@ -53,6 +53,8 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_STATE_HOME="$HOME/.local/state"
 
+export LESS="-FRX"
+
 export SNIPPETS="$XDG_DATA_HOME/snip/"
 export ZETDIR="$HOME/Documents/zettelkasten/"
 export CODE="$HOME/Documents/code/"
@@ -61,11 +63,6 @@ export CDPATH=".:$CODE:$HOME"
 
 export QT_QPA_PLATFORM=wayland
 export ELINKS_CONFDIR="$XDG_CONFIG_HOME"/elinks
-
-export FZF_DEFAULT_OPTS="
---color fg:-1,bg:-1,hl:#268bd2,fg+:#eee8d5,bg+:#073642,hl+:#268bd2
---color info:#b58900,prompt:#b58900,pointer:#fdf6e3
---color marker:#fdf6e3,spinner:#b58900"
 
 [ -f ~/.config/lf/LF_ICONS ] && {
     LF_ICONS="$(tr '\n' ':' <~/.config/lf/LF_ICONS)" \
@@ -131,6 +128,7 @@ alias mv="mv -iv"
 alias rm="rm -vI"
 alias bc="bc -ql"
 alias mkdir="mkdir -pv"
+alias less="less -R"
 
 alias ls="ls -hN --color=auto --group-directories-first"
 
@@ -186,23 +184,28 @@ cdf() {
 	if [[ ! -f "$XDG_CONFIG_HOME"/dirlist ]]; then 
 	    touch "$XDG_CONFIG_HOME"/dirlist; 
 	fi 
-	if [[ -n "$1" ]]; then 
-		if [[ $(grep "${PWD}" "$XDG_CONFIG_HOME"/dirlist) ]]; then 
-			echo "${PWD} already added to dirlist" 
-		else 
-			echo "${PWD}" >> "$XDG_CONFIG_HOME"/dirlist \
-			&& echo "Added ($PWD) to dirlist!" 
-		fi 
-	else 
-		local dirlist=$(fzf --height="30%" --header="Change directory to:" \
-		--preview="(ls -A --color "{1}")" --preview-window=right:50%:border \
-		< "$XDG_CONFIG_HOME"/dirlist) && cd ${dirlist} 
-	fi 
+    case $1 in
+        add | a | new)
+            if grep -q "${PWD}" "$XDG_CONFIG_HOME"/dirlist ; then 
+                echo "${PWD} already added to dirlist" 
+            else 
+                echo "${PWD}" >> "$XDG_CONFIG_HOME"/dirlist \
+                && echo "Added ($PWD) to dirlist!" 
+            fi 
+            ;;
+        *) 
+            local dirlist=$(fzf --height="35%" --header="Change directory to:" \
+            --preview="(ls -A --color "{1}")" --preview-window=right:50%:border \
+            < "$XDG_CONFIG_HOME"/dirlist) && cd ${dirlist} 
+            ;;
+    esac
 }
-
+bind '"\C-f":"cdf\C-m"'
 # ----- COMPLETION ----- #
 
 _have carapace && source <(carapace _carapace)
+complete -C kn kn
+complete -C keg keg
 
 # source /usr/share/bash-completion/bash_completion
 # source /home/vs/.nix-profile/share/bash-completion/completions/nix
