@@ -2,7 +2,7 @@
 -- General settings
 ------------------------
 lvim.format_on_save = true
-lvim.colorscheme = "solarized-flat"
+lvim.colorscheme = "adwaita"
 
 vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
@@ -83,6 +83,7 @@ lvim.plugins = {
     { "numToStr/Navigator.nvim" },
     { "zah/nim.vim" },
     { "olexsmir/gopher.nvim" },
+    { "Mofiqul/adwaita.nvim" },
 }
 
 ------------------------
