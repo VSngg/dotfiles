@@ -61,6 +61,8 @@ export CODE="$HOME/Documents/code/"
 
 export CDPATH=".:$CODE:$HOME"
 
+export KEG_CURRENT="$HOME/keg"
+
 export QT_QPA_PLATFORM=wayland
 export ELINKS_CONFDIR="$XDG_CONFIG_HOME"/elinks
 
@@ -193,10 +195,19 @@ cdf() {
                 && echo "Added ($PWD) to dirlist!" 
             fi 
             ;;
+        cf | config | conf)
+            cd "$XDG_CONFIG_HOME" || return
+            ;;
+        c | code)
+            cd "$CODE" || return
+            ;;
+        bin)
+            cd "$HOME/.local/bin" || return
+            ;;
         *) 
             local dirlist=$(fzf --height="35%" --header="Change directory to:" \
             --preview="(ls -A --color "{1}")" --preview-window=right:50%:border \
-            < "$XDG_CONFIG_HOME"/dirlist) && cd ${dirlist} 
+            < "$XDG_CONFIG_HOME"/dirlist) && cd ${dirlist} || return
             ;;
     esac
 }
