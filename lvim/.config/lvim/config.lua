@@ -2,7 +2,7 @@
 -- General settings
 ------------------------
 lvim.format_on_save = true
-lvim.colorscheme = "adwaita"
+lvim.colorscheme = "rasmus"
 
 vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
@@ -84,6 +84,7 @@ lvim.plugins = {
     { "zah/nim.vim" },
     { "olexsmir/gopher.nvim" },
     { "Mofiqul/adwaita.nvim" },
+    { "kvrohit/rasmus.nvim" },
 }
 
 ------------------------

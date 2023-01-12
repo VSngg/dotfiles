@@ -167,7 +167,7 @@ endif
 " ----- Colorscheme ----- "
 
 set background=dark
-colorscheme solarfog
+colorscheme fogbell
 set termguicolors
 
 " ----- vim-go Setup ----- "
