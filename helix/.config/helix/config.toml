@@ -1,10 +1,15 @@
-theme = "noctis"
+theme = "rasmus"
 
 [editor]
 cursorline = true
+scrolloff = 8
 mouse = false
 rulers = [80]
 color-modes = true
+bufferline = "multiple"
+
+[keys.normal]
+esc = ["collapse_selection", "keep_primary_selection"]
 
 [editor.cursor-shape]
 insert = "bar"
@@ -16,3 +21,10 @@ left = ["mode", "spinner"]
 center = ["file-name"]
 right = ["diagnostics", "selections", "position"]
 separator = "|"
+
+[editor.file-picker]
+max-depth = 3
+
+[editor.indent-guides]
+render = false
+character = "▏"
