@@ -182,7 +182,7 @@ lfcd () {
 
 bind '"\C-o":"lfcd\C-m"'
 
-cdf() { 
+f() { 
 	if [[ ! -f "$XDG_CONFIG_HOME"/dirlist ]]; then 
 	    touch "$XDG_CONFIG_HOME"/dirlist; 
 	fi 
@@ -211,7 +211,7 @@ cdf() {
             ;;
     esac
 }
-bind '"\C-f":"cdf\C-m"'
+bind '"\C-f":"f\C-m"'
 # ----- COMPLETION ----- #
 
 _have carapace && source <(carapace _carapace)
@@ -219,4 +219,4 @@ complete -C kn kn
 complete -C keg keg
 
 # source /usr/share/bash-completion/bash_completion
-# source /home/vs/.nix-profile/share/bash-completion/completions/nix
+[ -f "/home/vs/.ghcup/env" ] && source "/home/vs/.ghcup/env" # ghcup-env
