@@ -39,7 +39,7 @@ pathprepend \
 
 # ----- ENVIRONMENTAL VARIABLES ----- #
 
-export EDITOR="nvim"
+export EDITOR="vim"
 export BROWSER="firefox"
 export TERM=xterm-256color
 
@@ -152,7 +152,6 @@ alias info="info --vi-keys"
 alias weather="curl ru.wttr.in"
 alias toipe="toipe -w top1000"
 alias tetris="tint -n -d -s"
-alias lf="lfub"
 alias gotop="gotop -l procs"
 alias sshserver="ssh root@185.70.187.106"
 alias w3m="w3m -4"
@@ -219,4 +218,4 @@ complete -C kn kn
 complete -C keg keg
 
 # source /usr/share/bash-completion/bash_completion
-[ -f "/home/vs/.ghcup/env" ] && source "/home/vs/.ghcup/env" # ghcup-env
+#[ -f "/home/vs/.ghcup/env" ] && source "/home/vs/.ghcup/env" # ghcup-env
