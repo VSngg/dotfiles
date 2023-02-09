@@ -39,7 +39,12 @@ pathprepend \
 
 # ----- ENVIRONMENTAL VARIABLES ----- #
 
-export EDITOR="vim"
+if _have nvim; then
+    export EDITOR="nvim"
+else
+    export EDITOR="vim"
+fi
+
 export BROWSER="firefox"
 export TERM=xterm-256color
 
@@ -109,7 +114,7 @@ __ps1() {
     BRANCH=$(git branch --show-current 2> /dev/null)
     [[ -n "$BRANCH" ]] && BRANCH="[$BRANCH] " || BRANCH=""
 
-    PS1="$r\u$x@$b\h$x $w\W$x $p$BRANCH$x\$ "
+    PS1="$r\u$x@$b\h$x $w\w$x $p$BRANCH$x\n\$ "
 }
 
 PROMPT_COMMAND="__ps1"
