@@ -136,6 +136,7 @@ alias rm="rm -vI"
 alias bc="bc -ql"
 alias mkdir="mkdir -pv"
 alias less="less -R"
+alias pw="powershell.exe"
 
 alias ls="ls -hN --color=auto --group-directories-first"
 
@@ -158,7 +159,13 @@ alias weather="curl ru.wttr.in"
 alias toipe="toipe -w top1000"
 alias tetris="tint -n -d -s"
 alias gotop="gotop -l procs"
-alias sshserver="ssh root@185.70.187.106"
+
+if _have mosh; then
+    alias sshserver="mosh root@185.70.187.106"
+else
+    alias sshserver="ssh root@185.70.187.106"
+fi
+
 alias w3m="w3m -4"
 alias '?'="searxsearch"
 alias '??'="google"
@@ -224,3 +231,4 @@ complete -C keg keg
 
 # source /usr/share/bash-completion/bash_completion
 #[ -f "/home/vs/.ghcup/env" ] && source "/home/vs/.ghcup/env" # ghcup-env
+. "$HOME/.cargo/env"
