@@ -1,8 +1,0 @@
-#!/bin/bash
-
-COLS=$(tput cols)
-if [[ $COLS -lt 120 ]]; then
-    tmux splitw -vb -l 24 $EDITOR "$@"
-else
-    tmux splitw -hb -l 100 $EDITOR "$@"
-fi

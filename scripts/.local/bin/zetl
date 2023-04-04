@@ -1,8 +1,0 @@
-#!/bin/sh
-#
-# A script for linking zettels
-
-OUTPUT=$(ls $HOME/Documents/zettelkasten/ | fzf)
-echo "[$OUTPUT](/$OUTPUT/)" | xclip -selection clip
-echo "[$OUTPUT](/$OUTPUT/) copied to clipboard!"
-

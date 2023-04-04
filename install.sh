@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ $# -lt 1 ]; then
-  >&2 echo "Usage: install.sh { all | bash | tmux | vim | helix }"
+  >&2 echo "Usage: install.sh { all | bash | tmux | vim | helix | scripts }"
   exit 0
 fi
 
@@ -24,6 +24,9 @@ case $1 in
     ;;
   helix)
     install_dotfiles helix
+    ;;
+  scripts)
+    install_dotfiles scripts
     ;;
   all)
     for i in bash tmux vim helix; do
