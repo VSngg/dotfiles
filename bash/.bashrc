@@ -233,4 +233,4 @@ complete -C keg keg
 
 # source /usr/share/bash-completion/bash_completion
 #[ -f "/home/vs/.ghcup/env" ] && source "/home/vs/.ghcup/env" # ghcup-env
-. "$HOME/.cargo/env"
+#. "$HOME/.cargo/env"
