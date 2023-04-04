@@ -33,9 +33,12 @@ pathprepend() {
 } && export -f pathprepend
 
 pathprepend \
-    "/home/vs/.local/bin" \
-    "/home/vs/.cargo/bin" \
-    "/home/vs/go/bin" \
+    "$HOME/.local/bin" \
+    "$HOME/.cargo/bin" \
+    "$HOME/go/bin" \
+
+pathappend \
+    "$HOME/scripts"
 
 # ----- ENVIRONMENTAL VARIABLES ----- #
 
