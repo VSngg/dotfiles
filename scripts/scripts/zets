@@ -1,0 +1,19 @@
+#!/bin/sh
+
+# cd "$HOME"/Documents/zettelkasten/ || exit
+# grep -Ril --exclude-dir=.git "$1" | fzf --preview 'bat -l md --color=always --decorations=never {}' | xargs -r "$EDITOR"
+
+# | fzf --preview 'bat -l md --color=always --decorations=never {}'
+
+findzettels() {
+    if test "$#" -eq 0; then
+        echo "no arguments. exiting..."
+        exit
+    else
+        grep -ril "$*" "$ZETDIR" 
+    fi
+}
+
+findzettels "$@" \
+    | fzf --preview 'bat -l md --color=always --decorations=never {}' \
+    | xargs -r "$EDITOR"

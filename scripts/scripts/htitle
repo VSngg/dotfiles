@@ -1,0 +1,9 @@
+#!/bin/sh
+
+main() {
+    local str="$1" pre="${2:-#}"
+    char='-----'
+    printf "%s %s %s %s %s\n" "$pre" "$char" "$str" "$char" "$pre"
+}
+
+main "$@"

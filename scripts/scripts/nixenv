@@ -1,0 +1,28 @@
+#!/bin/bash
+
+ACTION="$1"
+PACKAGE_NAME="$2"
+
+usage() {
+    echo "Usage: install/remove <package_name>, upgrade"
+}
+
+case $ACTION in
+
+    install)
+        nix-env -iA nixpkgs."$PACKAGE_NAME"
+        ;;
+
+    remove)
+        nix-env -e "$PACKAGE_NAME"
+        ;;
+
+    upgrade)
+        nix-env -u
+        ;;
+
+    *)
+        usage
+        ;;
+esac
+
