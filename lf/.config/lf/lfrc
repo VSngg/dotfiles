@@ -80,7 +80,7 @@ cmd zip ${{
     rm -rf $1
 }}
 
-set previewer ctpv
-set cleaner ctpvclear
-&ctpv -s $id
-&ctpvquit $id
+#set previewer ctpv
+#set cleaner ctpvclear
+#&ctpv -s $id
+#&ctpvquit $id
