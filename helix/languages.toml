@@ -2,3 +2,9 @@
 name = "c"
 file-types = ["c","h"]
 indent = { tab-width = 4, unit = "    " }
+
+[[language]]
+name = "bash"
+shebangs = ["sh", "bash"]
+indent = { tab-width = 4, unit= "    " }
+
