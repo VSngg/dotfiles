@@ -7,8 +7,8 @@ fi
 
 install_dotfiles() {
   local program=$1
-  cd $1 && ./install-$program.sh
-  cd -
+  cd "$1" && ./install-"$program".sh
+  cd - || exit
 }
 
 case $1 in
