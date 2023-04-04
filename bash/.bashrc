@@ -171,6 +171,14 @@ else
     alias sshserver="ssh root@185.70.187.106"
 fi
 
+if _have nala; then
+    alias sai="sudo nala install"
+    alias sas="sudo nala search"
+else
+    alias sai="sudo apt install"
+    alias sas="sudo apt search"
+fi
+
 alias w3m="w3m -4"
 alias '?'="searxsearch"
 alias '??'="google"
