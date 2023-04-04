@@ -5,22 +5,29 @@ if [ $# -lt 1 ]; then
   exit 0
 fi
 
+install_dotfiles() {
+  local program=$1
+  cd $1 && ./install-$program.sh
+  cd -
+}
+
 case $1 in
   bash)
-    cd bash && ./install-bash.sh
-    cd -
+    install_dotfiles bash
     ;;
 
   tmux)
-    cd tmux && ./install-tmux.sh
-    cd -
+    install_dotfiles tmux
     ;;
   vim)
-    cd vim && ./install-vim.sh
-    cd -
+    install_dotfiles vim
     ;;
   helix)
-    cd helix && ./install-helix.sh
-    cd -
+    install_dotfiles helix
+    ;;
+  all)
+    for i in bash tmux vim helix; do
+      install_dotfiles $i
+    done
     ;;
 esac
