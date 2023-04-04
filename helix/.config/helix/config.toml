@@ -1,10 +1,10 @@
-theme = "rasmus"
+theme = "ayu_evolve"
 
 [editor]
 cursorline = true
 scrolloff = 8
 mouse = false
-rulers = [80]
+rulers = [100]
 color-modes = true
 bufferline = "multiple"
 
@@ -26,5 +26,5 @@ separator = "|"
 max-depth = 3
 
 [editor.indent-guides]
-render = false
+render = true
 character = "▏"
