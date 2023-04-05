@@ -149,17 +149,17 @@ au FileType text setlocal tw=80
 
 if filereadable(expand("~/.vim/autoload/plug.vim"))
     call plug#begin('~/.local/share/vim/plugins')
-    Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-    Plug 'altercation/vim-colors-solarized'
+    "Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+    "Plug 'altercation/vim-colors-solarized'
     Plug 'lifepillar/vim-mucomplete'
     Plug 'ap/vim-buftabline'
-    Plug 'jaredgorski/fogbell.vim'
-    Plug 'chrisbra/Colorizer'
-    Plug 'VSngg/solarfog.vim'
-    Plug 'junegunn/goyo.vim'
+    "Plug 'jaredgorski/fogbell.vim'
+    "Plug 'chrisbra/Colorizer'
+    "Plug 'VSngg/solarfog.vim'
+    "Plug 'junegunn/goyo.vim'
     Plug 'junegunn/fzf.vim'
     Plug 'jiangmiao/auto-pairs'
-    Plug 'davidhalter/jedi-vim'
+    "Plug 'davidhalter/jedi-vim'
     Plug 'christoomey/vim-tmux-navigator'
     call plug#end()
 endif
@@ -167,7 +167,7 @@ endif
 " ----- Colorscheme ----- "
 
 set background=dark
-colorscheme fogbell
+"colorscheme fogbell
 set termguicolors
 
 " ----- vim-go Setup ----- "
