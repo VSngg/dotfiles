@@ -179,6 +179,8 @@ else
     alias sas="sudo apt search"
 fi
 
+_have lazygit && alias lg="lazygit"
+
 alias w3m="w3m -4"
 alias '?'="searxsearch"
 alias '??'="google"
