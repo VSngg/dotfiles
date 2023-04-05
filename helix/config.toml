@@ -17,9 +17,9 @@ normal = "block"
 select = "underline"
 
 [editor.statusline]
-left = ["mode", "spinner"]
-center = ["file-name"]
-right = ["diagnostics", "selections", "position"]
+left = ["mode", "version-control"]
+center = ["file-name", "file-modification-indicator"]
+right = ["diagnostics", "selections", "position", "file-encoding"]
 separator = "|"
 
 [editor.file-picker]
