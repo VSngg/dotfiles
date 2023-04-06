@@ -6,6 +6,7 @@ scrolloff = 8
 mouse = false
 rulers = [100]
 color-modes = true
+true-color = true
 bufferline = "multiple"
 
 [keys.normal]
