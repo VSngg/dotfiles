@@ -165,11 +165,6 @@ alias toipe="toipe -w top1000"
 alias tetris="tint -n -d -s"
 alias gotop="gotop -l procs"
 
-if _have mosh; then
-    alias sshserver="mosh root@185.70.187.106"
-else
-    alias sshserver="ssh root@185.70.187.106"
-fi
 
 if _have nala; then
     alias sai="sudo nala install"
