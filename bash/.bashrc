@@ -56,14 +56,12 @@ export TERM=xterm-256color
 _have go && export GOPATH=$(go env GOPATH)
 
 export BAT_THEME="Solarized (dark)"
-_have batcat && export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+export MANROFFOPT="-c"
 
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_STATE_HOME="$HOME/.local/state"
-
-export LESS="-FRX"
 
 export SNIPPETS="$XDG_DATA_HOME/snip/"
 export ZETDIR="$HOME/Documents/zettelkasten/"
@@ -207,6 +205,20 @@ lfcd () {
 }
 
 bind '"\C-o":"lfcd\C-m"'
+
+function tm() {
+    # 1. Check if tmux is installed
+    if ! _have tmux; then
+        echo "Error: tmux is not installed or not found in PATH." >&2
+        echo "Please install tmux to use this function." >&2
+        return 1
+    fi
+    # Define the target session name
+    local session_name="default"
+    echo "Attempting to attach to session '${session_name}' (creating if necessary)..."
+    # Use -A (Attach) on new-session. If 'default' exists, it attaches instead of creating.
+    tmux new-session -A -s "${session_name}"
+}
 
 f() { 
 	if [[ ! -f "$XDG_CONFIG_HOME"/dirlist ]]; then 
