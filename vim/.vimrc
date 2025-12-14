@@ -18,7 +18,7 @@ set number              " Show line numbers
 set relativenumber      " Set relative numbers
 set cursorline          " Highlight cursorline
 "set cursorcolumn       " Highlight cursorcolumn
-set colorcolumn=81
+"set colorcolumn=81
 set splitbelow
 set splitright
 
@@ -168,6 +168,7 @@ endif
 
 set background=dark
 "colorscheme fogbell
+colorscheme habamax
 set termguicolors
 
 " ----- vim-go Setup ----- "

@@ -38,6 +38,8 @@ pathprepend \
     "$HOME/go/bin" \
 
 pathappend \
+    "$HOME/.local/bin/odin" \
+    "$HOME/.local/bin/ark_vcs" \
     "$HOME/scripts"
 
 # ----- ENVIRONMENTAL VARIABLES ----- #
@@ -163,12 +165,6 @@ alias toipe="toipe -w top1000"
 alias tetris="tint -n -d -s"
 alias gotop="gotop -l procs"
 
-if _have mosh; then
-    alias sshserver="mosh root@185.70.187.106"
-else
-    alias sshserver="ssh root@185.70.187.106"
-fi
-
 if _have nala; then
     alias sai="sudo nala install"
     alias sas="sudo nala search"
@@ -256,6 +252,5 @@ _have carapace && source <(carapace _carapace)
 complete -C kn kn
 complete -C keg keg
 
-# source /usr/share/bash-completion/bash_completion
-#[ -f "/home/vs/.ghcup/env" ] && source "/home/vs/.ghcup/env" # ghcup-env
-#. "$HOME/.cargo/env"
+. "$HOME/.local/share/../bin/env"
+eval "$(uv generate-shell-completion bash)"
